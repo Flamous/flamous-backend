@@ -60,14 +60,14 @@ provider:
   stage: dev
   region: us-east-1
 
-functions:
-  graphql:
-    handler: handler.graphql
-    events:
-      - http:
-          path: graphql
-          method: get
-          cors: true
+# functions:
+#   graphql:
+#     handler: handler.graphql
+#     events:
+#       - http:
+#           path: graphql
+#           method: get
+#           cors: true
 
 resources:
   # DynamoDB

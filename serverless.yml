@@ -25,28 +25,28 @@ custom:
   # Load our secret environment variables based on the current stage.
   # Fallback to default if it is not in prod.
   # environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
-    # appSync:
-  #   name: flamous-api
-  #   authenticationType: AMAZON_COGNITO_USER_POOLS
-  #   userPoolConfig:
-  #     awsRegion: eu-west-1
-  #     defaultAction: ALLOW
-  #     userPoolId:
-  #       - "Fn::ImportValue": UserPoolId
-  #   mappingTemplatesLocation: mapping-templates
-  #   mappingTemplates:
-  #     - dataSource: myDynamoDB
-  #       type: Query
-  #       field: artist
-  #       request: "getArtistInfo-request.vlt"
-  #       response: "getArtistInfo-response.vlt"
-  #   schema: schema.graphql
-  #   dataSources:
-  #     - type: AMAZON_DYNAMODB
-  #       name: myDynamoDB
-  #       config:
-  #         tableName:
-  #           - "Fn::GetAtt": [ ArtistsTable, Arn ]
+  appSync:
+    name: api
+    authenticationType: AMAZON_COGNITO_USER_POOLS
+    userPoolConfig:
+      awsRegion: eu-west-1
+      defaultAction: ALLOW
+      userPoolId:
+        - "Fn::ImportValue": UserPoolId
+    mappingTemplatesLocation: mapping-templates
+    mappingTemplates:
+      - dataSource: myDynamoDB
+        type: Query
+        field: artist
+        request: "getArtistInfo-request.vlt"
+        response: "getArtistInfo-response.vlt"
+    schema: schema.graphql
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: myDynamoDB
+        config:
+          tableName:
+            - "Fn::GetAtt": [ ArtistsTable, Arn ]
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA
     #     name: myDynamoDB | myElasticSearch | myLambda

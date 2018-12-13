@@ -1,0 +1,79 @@
+service: flamous
+
+app: flamous
+tenant: christiankaindl
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  # - serverless-appsync-plugin
+
+custom:
+  # Our stage is based on what is passed in when running serverless
+  # commands. Or fallsback to what we have set in the provider section.
+  stage: ${opt:stage, self:provider.stage}
+  # Set our DynamoDB throughput for prod and all other non-prod stages.
+  tableThroughputs:
+    prod: 5
+    default: 1
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
+  # Load our webpack config
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  # Load our secret environment variables based on the current stage.
+  # Fallback to default if it is not in prod.
+  # environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+    # appSync:
+  #   name: flamous-api
+  #   authenticationType: AMAZON_COGNITO_USER_POOLS
+  #   userPoolConfig:
+  #     awsRegion: eu-west-1
+  #     defaultAction: ALLOW
+  #     userPoolId:
+  #       - "Fn::ImportValue": UserPoolId
+  #   mappingTemplatesLocation: mapping-templates
+  #   mappingTemplates:
+  #     - dataSource: myDynamoDB
+  #       type: Query
+  #       field: artist
+  #       request: "getArtistInfo-request.vlt"
+  #       response: "getArtistInfo-response.vlt"
+  #   schema: schema.graphql
+  #   dataSources:
+  #     - type: AMAZON_DYNAMODB
+  #       name: myDynamoDB
+  #       config:
+  #         tableName:
+  #           - "Fn::GetAtt": [ ArtistsTable, Arn ]
+    # dataSources:
+    #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA
+    #     name: myDynamoDB | myElasticSearch | myLambda
+    #     config:
+    #       tableName | endpoint | lambdaFunctionArn
+    #       serviceRoleArn: IAM ROLE
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+
+functions:
+  graphql:
+    handler: handler.graphql
+    events:
+      - http:
+          path: graphql
+          method: get
+          cors: true
+
+resources:
+  # DynamoDB
+  - ${file(resources/dynamodb-table.yml)}
+  # S3
+  # - ${file(resources/s3-bucket.yml)}
+  # # Cognito
+  # - ${file(resources/cognito-user-pool.yml)}
+  # - ${file(resources/cognito-identity-pool.yml)}

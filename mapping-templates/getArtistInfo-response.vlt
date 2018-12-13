@@ -1,0 +1,5 @@
+{
+        "id" : ${context.data.artistId},
+        "name" : "${context.data.name}",
+        "songs" : "${context.data.songs}"
+}

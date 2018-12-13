@@ -1,0 +1,42 @@
+type Query {
+  artist(id: ID): Artist
+  artists(top: Int!): [Artist!]!
+}
+
+# type Mutation {
+
+# }
+
+type Artist {
+  id: ID!
+  name: String!
+  songs: [Song]
+  albums: [Album]
+  joinedAt: Int!
+  imageSources: [String!]!
+}
+
+type Song {
+  id: ID
+  title: String!
+  artists: [Artist]!
+  by: User
+  audioSources: [String!]!
+  imageSources: [String!]!
+  createdAt: Int!
+}
+
+type Album {
+  id: ID!
+  title: String!
+  createdAt: Int!
+  by: User
+  artists: [Artist!]!
+  songs: [Song!]!
+}
+
+type User {
+  id: ID!
+  name: String!
+  joinedAt: Int!
+}

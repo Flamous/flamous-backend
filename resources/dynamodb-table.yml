@@ -11,18 +11,22 @@ Resources:
       KeySchema:
         - AttributeName: songId
           KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
       GlobalSecondaryIndexes:
         - IndexName: SongsArtistIndex
-          Projection:
-            ProjectionType: KEYS_ONLY
           KeySchema:
             - AttributeName: artistId
               KeyType: HASH
             - AttributeName: songId
               KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: ${self:custom.tableThroughput}
-        WriteCapacityUnits: ${self:custom.tableThroughput}
+          Projection:
+            ProjectionType: KEYS_ONLY
+          ProvisionedThroughput:
+            ReadCapacityUnits: ${self:custom.tableThroughput}
+            WriteCapacityUnits: ${self:custom.tableThroughput}
+
   # AlbumsTable:
   #   Type: AWS::DynamoDB::Table
   #   Properties:

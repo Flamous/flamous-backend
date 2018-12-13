@@ -5,7 +5,7 @@ tenant: christiankaindl
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
-  - serverless-webpack
+  # - serverless-webpack
   - serverless-offline
   # - serverless-appsync-plugin
 
@@ -60,14 +60,14 @@ provider:
   stage: dev
   region: us-east-1
 
-functions:
-  graphql:
-    handler: handler.graphql
-    events:
-      - http:
-          path: graphql
-          method: get
-          cors: true
+# functions:
+#   graphql:
+#     handler: handler.graphql
+#     events:
+#       - http:
+#           path: graphql
+#           method: get
+#           cors: true
 
 resources:
   # DynamoDB

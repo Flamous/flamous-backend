@@ -27,40 +27,43 @@ Resources:
             ReadCapacityUnits: ${self:custom.tableThroughput}
             WriteCapacityUnits: ${self:custom.tableThroughput}
 
-  # AlbumsTable:
-  #   Type: AWS::DynamoDB::Table
-  #   Properties:
-  #     TableName: ${self:custom.stage}-albums
-  #     AttributeDefinitions:
-  #       - AttributeName: albumId
-  #         AttributeType: S
-  #       - AttributeName: artistId
-  #         AttributeType: S
-  #     KeySchema:
-  #       - AttributeName: albumId
-  #         KeyType: HASH
-  #     GlobalSecondaryIndexes:
-  #       - IndexName: AlbumsArtistIndex
-  #         Projection:
-  #           ProjectionType: KEYS_ONLY
-  #         KeySchema:
-  #           - AttributeName: artistId
-  #             KeyType: HASH
-  #           - AttributeName: albumId
-  #             KeyType: RANGE
-  #     ProvisionedThroughput:
-  #       ReadCapacityUnits: ${self:custom.tableThroughput}
-  #       WriteCapacityUnits: ${self:custom.tableThroughput}
-  # ArtistsTable:
-  #   Type: AWS::DynamoDB::Table
-  #   Properties:
-  #     TableName: ${self:custom.stage}-artists
-  #     AttributeDefinitions:
-  #       - AttributeName: artistId
-  #         AttributeType: S
-  #     KeySchema:
-  #       - AttributeName: artistId
-  #         KeyType: HASH
-  #     ProvisionedThroughput:
-  #       ReadCapacityUnits: ${self:custom.tableThroughput}
-  #       WriteCapacityUnits: ${self:custom.tableThroughput}
+  AlbumsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-albums
+      AttributeDefinitions:
+        - AttributeName: albumId
+          AttributeType: S
+        - AttributeName: artistId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: albumId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
+      GlobalSecondaryIndexes:
+        - IndexName: AlbumsArtistIndex
+          KeySchema:
+            - AttributeName: artistId
+              KeyType: HASH
+            - AttributeName: albumId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: KEYS_ONLY
+          ProvisionedThroughput:
+            ReadCapacityUnits: ${self:custom.tableThroughput}
+            WriteCapacityUnits: ${self:custom.tableThroughput}
+  ArtistsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-artists
+      AttributeDefinitions:
+        - AttributeName: artistId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: artistId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}

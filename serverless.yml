@@ -31,7 +31,7 @@ custom:
     userPoolConfig:
       awsRegion: ${self:provider.region}
       defaultAction: ALLOW
-      userPoolId: { Ref: UserPoolId }
+      userPoolId: { Ref: CognitoUserPool }
     mappingTemplatesLocation: mapping-templates
     logConfig:
       loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }

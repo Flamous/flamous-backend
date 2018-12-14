@@ -87,11 +87,13 @@ Resources:
 
   CognitoUserGroup:
     Type: AWS::IAM::Group
-    GroupName: ${self:custom.stage}-user-group
+    Properties:
+      GroupName: ${self:custom.stage}-user-group
 
   CognitoArtistGroup:
     Type: AWS::IAM::Group
-    GroupName: ${self:custom.stage}-artist-group
+    Properties:
+      GroupName: ${self:custom.stage}-artist-group
   
 # Print out the Id of the Identity Pool that is created
 Outputs:

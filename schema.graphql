@@ -40,3 +40,7 @@ type User {
   name: String!
   joinedAt: Int!
 }
+
+schema {
+  query: Query
+}

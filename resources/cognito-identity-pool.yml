@@ -84,9 +84,23 @@ Resources:
                       - '/private/'
                       - '$'
                       - '{cognito-identity.amazonaws.com:sub}/*'
+
+  CognitoUserGroup:
+    Type: AWS::IAM::Group
+    GroupName: ${self:custom.stage}-user-group
+
+  CognitoArtistGroup:
+    Type: AWS::IAM::Group
+    GroupName: ${self:custom.stage}-artist-group
   
 # Print out the Id of the Identity Pool that is created
 Outputs:
   IdentityPoolId:
     Value:
       Ref: CognitoIdentityPool
+  UserGroupId:
+    Value:
+      Ref: CognitoUserGroup
+  ArtistGroupId:
+    Value:
+      Ref: CognitoArtistGroup

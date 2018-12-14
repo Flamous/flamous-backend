@@ -26,7 +26,7 @@ custom:
   # Fallback to default if it is not in prod.
   # environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
   appSync:
-    name: api
+    name: ${self:custom.stage}-api
     authenticationType: AMAZON_COGNITO_USER_POOLS
     userPoolConfig:
       awsRegion: eu-west-1

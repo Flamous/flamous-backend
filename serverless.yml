@@ -46,7 +46,7 @@ custom:
         name: myDynamoDB
         config:
           tableName:
-            - "Fn::GetAtt": [ ArtistsTable, Arn ]
+            Ref: ArtistsTable
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA
     #     name: myDynamoDB | myElasticSearch | myLambda

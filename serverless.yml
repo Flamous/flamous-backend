@@ -29,7 +29,7 @@ custom:
     name: ${self:custom.stage}-api
     authenticationType: AMAZON_COGNITO_USER_POOLS
     userPoolConfig:
-      awsRegion: eu-west-1
+      awsRegion: ${self:provider.region}
       defaultAction: ALLOW
       userPoolId:
         - "Fn::ImportValue": UserPoolId

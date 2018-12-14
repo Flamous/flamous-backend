@@ -34,6 +34,9 @@ custom:
       userPoolId:
         Fn::GetAtt: [UserPoolId, Arn]
     mappingTemplatesLocation: mapping-templates
+    logConfig:
+      loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
+      level: ALL
     mappingTemplates:
       - dataSource: myDynamoDB
         type: Query
@@ -77,3 +80,4 @@ resources:
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
+  - ${file(resources/roles.yml)}

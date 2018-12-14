@@ -1,0 +1,27 @@
+Resources:
+  AppSyncLoggingServiceRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: "CloudwatchLogging-${self:service}-Role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Principal:
+              Service:
+                - "appsync.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Policies:
+        -
+          PolicyName: "CloudwatchLogging-${self:service}-Policy"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Effect: "Allow"
+                Action:
+                  - "cloudwatch:*"
+                Resource:
+                  - "*"

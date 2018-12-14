@@ -32,7 +32,7 @@ custom:
       awsRegion: ${self:provider.region}
       defaultAction: ALLOW
       userPoolId:
-        - "Fn::ImportValue": UserPoolId
+        Fn::GetAtt: [UserPoolId, Arn]
     mappingTemplatesLocation: mapping-templates
     mappingTemplates:
       - dataSource: myDynamoDB

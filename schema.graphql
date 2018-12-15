@@ -60,5 +60,6 @@ type User {
 }
 
 schema {
+  query: Query
   mutation: Mutation
 }

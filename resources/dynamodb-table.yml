@@ -73,10 +73,10 @@ Resources:
     Properties:
       TableName: ${self:custom.stage}-users
       AttributeDefinitions:
-        - AttributeName: usersId
+        - AttributeName: userId
           AttributeType: S
       KeySchema:
-        - AttributeName: usershId
+        - AttributeName: userId
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: ${self:custom.tableThroughput}

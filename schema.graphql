@@ -1,5 +1,5 @@
 type Query {
-  
+  artist(artistId: ID): Artist
 }
 
 type Mutation {

@@ -1,28 +1,12 @@
+type Query {
+  artist(artistId: ID): Artist
+  artistList(top: Int!): [Artist!]!
 
+  album(albumId: ID): Album
+  albumList(artistId: ID!, top: Int): [Album]!
 
-type Mutation {
-  createUser(
-    userId: ID!
-    name: String!
-    joinedAt: Int
-  ): User!
-
-  updateUser(
-    userId: ID!
-    name: String!
-  ): User!
-
-  deleteUser(
-    userId: ID!
-  ): User!
-
-  # createSong
-  # updateSong
-  # deleteSong
-
-  # createAlbum
-  # updateAlbum
-  # deleteAlbum
+  song(songId: ID): Song
+  songList(artistId: ID!, top: Int): [Song]!
 }
 
 type Artist {
@@ -60,5 +44,5 @@ type User {
 }
 
 schema {
-  mutation: Mutation
+  query: Query
 }

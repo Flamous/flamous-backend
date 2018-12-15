@@ -68,7 +68,7 @@ Resources:
         ReadCapacityUnits: ${self:custom.tableThroughput}
         WriteCapacityUnits: ${self:custom.tableThroughput}
 
-  ArtistsTable:
+  UsersTable:
     Type: AWS::DynamoDB::Table
     Properties:
       TableName: ${self:custom.stage}-users

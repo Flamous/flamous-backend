@@ -45,7 +45,7 @@ custom:
       schema: schema.graphql
       dataSources:
         - type: AMAZON_DYNAMODB
-          name: artistTable
+          name: artistsTable
           config:
             tableName:
               Ref: ArtistsTable

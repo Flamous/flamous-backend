@@ -1,0 +1,15 @@
+#set($attribs = $util.dynamodb.toMapValues($ctx.args.input))
+{
+  "version": "2017-02-28",
+  "operation": "PutItem",
+  "key": {
+    "artistId":$util.dynamodb.toDynamoDBJson($util.autoId())
+  },
+  "attributeValues": $util.toJson($attribs),
+  "condition": {
+    "expression": "attribute_not_exists(#artistId)",
+    "expressionNames": {
+      "#artistId": "artistId",
+    },
+  },
+}

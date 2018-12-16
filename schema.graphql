@@ -4,19 +4,19 @@ type Query {
 
 type Mutation {
   createArtist(
-    artistId: ID!
+    artistId: ID
     name: String!
     joinedAt: Int
-  ): User!
+  ): Artist!
 
   updateArtist(
     artistId: ID!
     name: String!
-  ): User!
+  ): Artist!
 
   deleteArtist(
     artistId: ID!
-  ): User!
+  ): Artist!
 
   # createSong
   # updateSong

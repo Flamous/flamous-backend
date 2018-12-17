@@ -11,7 +11,7 @@ type Mutation {
 
   updateArtist(
     artistId: ID!
-    name: String!
+    name: String
   ): Artist!
 
   deleteArtist(

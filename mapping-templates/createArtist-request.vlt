@@ -1,4 +1,5 @@
 #set($attribs = $util.dynamodb.toMapValues($ctx.args))
+#set($attribs.user = $ctx.identity.username)
 {
   "version": "2017-02-28",
   "operation": "PutItem",

@@ -7,16 +7,16 @@ type Mutation {
     artistId: ID
     name: String!
     joinedAt: Int
-  ): Artist!
+  ): Artist
 
   updateArtist(
     artistId: ID!
     name: String
-  ): Artist!
+  ): Artist
 
   deleteArtist(
     artistId: ID!
-  ): Artist!
+  ): Artist
 
   # createSong
   # updateSong

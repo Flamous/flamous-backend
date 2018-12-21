@@ -9,6 +9,10 @@ Resources:
         - email
       AutoVerifiedAttributes:
         - email
+      EmailVerificationMessage: "Here is your sign-up code for flamous.io: {####}"
+      EmailVerificationSubject: 'Flamous Sign-Up code'
+      EmailConfiguration:
+        ReplyToEmailAddress: 'hello@flamous.io'
       Policies:
         PasswordPolicy:
           MinimumLength: 8

@@ -26,74 +26,61 @@ custom:
   # Fallback to default if it is not in prod.
   # environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
   appSync:
-    - name: ${self:custom.stage}-api
-      authenticationType: AMAZON_COGNITO_USER_POOLS
-      userPoolConfig:
-        awsRegion: ${self:provider.region}
-        defaultAction: ALLOW
-        userPoolId: { Ref: CognitoUserPool }
-      mappingTemplatesLocation: mapping-templates
-      logConfig:
-        loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
-        level: ALL
-      mappingTemplates:
-        - dataSource: artistsTable
-          type: Mutation
-          field: createArtist
-          request: "createArtist-request.vlt"
-          response: "createArtist-response.vlt"
-      schema: schema.graphql
-      dataSources:
-        - type: AMAZON_DYNAMODB
-          name: artistsTable
-          config:
-            tableName:
-              Ref: ArtistsTable
-    - name: ${self:custom.stage}-public-api
-      authenticationType: API_KEY
-      schema: public-schema.graphql
-      logConfig:
-        loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
-        level: ALL
-      mappingTemplatesLocation: mapping-templates-public
-      mappingTemplates:
-        - dataSource: artistsTable
-          type: Query
-          field: artist
-          request: "artist-request.vlt"
-          response: "artist-response.vlt"
-        # - dataSource: artistsTable
-        #   type: Query
-        #   field: artistList
-        #   request: "artistList-request.vlt"
-        #   response: "artistList-response.vlt"
+    name: ${self:custom.stage}-api
+    authenticationType: AMAZON_COGNITO_USER_POOLS
+    userPoolConfig:
+      awsRegion: ${self:provider.region}
+      defaultAction: ALLOW
+      userPoolId: { Ref: CognitoUserPool }
+    mappingTemplatesLocation: mapping-templates
+    logConfig:
+      loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
+      level: ALL
+    mappingTemplates:
+      - dataSource: artistsTable
+        type: Mutation
+        field: createArtist
+        request: "createArtist-request.vlt"
+        response: "createArtist-response.vlt"
+      - dataSource: artistsTable
+        type: Query
+        field: artist
+        request: "artist-request.vlt"
+        response: "artist-response.vlt"
+      # - dataSource: artistsTable
+      #   type: Query
+      #   field: artistList
+      #   request: "artistList-request.vlt"
+      #   response: "artistList-response.vlt"
 
-        - dataSource: songsTable
-          type: Query
-          field: song
-          request: "song-request.vlt"
-          response: "song-response.vlt"
-        - dataSource: songsTable
-          type: Query
-          field: songList
-          request: "songList-request.vlt"
-          response: "songList-response.vlt"
-      dataSources:
-        - type: AMAZON_DYNAMODB
-          name: artistsTable
-          config:
-            tableName:
-              Ref: ArtistsTable
-        - type: AMAZON_DYNAMODB
-          name: songsTable
-          config:
-            tableName:
-              Ref: SongsTable
-        - type: AMAZON_DYNAMODB
-          name: albumsTable
-          config:
-            tableName:
-              Ref: AlbumsTable
+      - dataSource: songsTable
+        type: Query
+        field: song
+        request: "song-request.vlt"
+        response: "song-response.vlt"
+      - dataSource: songsTable
+        type: Query
+        field: songList
+        request: "songList-request.vlt"
+        response: "songList-response.vlt"
+    dataSources:
+    schema: schema.graphql
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: artistsTable
+        config:
+          tableName:
+            Ref: ArtistsTable
+      - type: AMAZON_DYNAMODB
+        name: songsTable
+        config:
+          tableName:
+            Ref: SongsTable
+      - type: AMAZON_DYNAMODB
+        name: albumsTable
+        config:
+          tableName:
+            Ref: AlbumsTable
 
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA

@@ -1,5 +1,12 @@
 type Query {
   artist(artistId: ID): Artist
+  artistList(top: Int!): [Artist!]!
+
+  album(albumId: ID): Album
+  albumList(artistId: ID!, top: Int): [Album]!
+
+  song(songId: ID): Song
+  songList(artistId: ID!, top: Int): [Song]!
 }
 
 type Mutation {

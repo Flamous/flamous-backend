@@ -43,7 +43,7 @@ type Mutation {
     by: Artist!,
     artists: [String],
     songs: [Song]!
-    isPublished: BOOL
+    isPublished: Boolean
   ): Album
   updateAlbum(
     title: String,

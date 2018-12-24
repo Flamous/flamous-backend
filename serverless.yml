@@ -37,6 +37,17 @@ custom:
       loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
       level: ALL
     mappingTemplates:
+      - dataSource: usersTable
+        type: Query
+        field: user
+        request: "user-request.vtl"
+        response: "user-response.vtl"
+      - dataSource: usersTable
+        type: Mutation
+        field: createUser
+        request: "createUser-request.vtl"
+        response: "createUser-response.vtl"
+
       - dataSource: artistsTable
         type: Mutation
         field: createArtist
@@ -47,11 +58,6 @@ custom:
         field: artist
         request: "artist-request.vlt"
         response: "artist-response.vlt"
-      # - dataSource: artistsTable
-      #   type: Query
-      #   field: artistList
-      #   request: "artistList-request.vlt"
-      #   response: "artistList-response.vlt"
 
       - dataSource: songsTable
         type: Query

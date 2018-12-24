@@ -1,4 +1,6 @@
 type Query {
+  user(userId: ID): User
+
   artist(artistId: ID): Artist
   artistList(top: Int!): [Artist!]!
 
@@ -10,15 +12,21 @@ type Query {
 }
 
 type Mutation {
-  createArtist(
+  createUser: User
+  updateUser(
+    userId: ID!
     artistId: ID
-    name: String!
-    joinedAt: Int
+  ):User
+
+  createArtist(
+    name: String!,
+    associatedUser: ID
   ): Artist
 
   updateArtist(
-    artistId: ID!
-    name: String
+    artistId: ID!,
+    name: String,
+    associatedUser: ID
   ): Artist
 
   deleteArtist(
@@ -29,9 +37,26 @@ type Mutation {
   # updateSong
   # deleteSong
 
-  # createAlbum
-  # updateAlbum
-  # deleteAlbum
+  createAlbum(
+    title: String!,
+    description: String,
+    by: Artist!,
+    artists: [String],
+    songs: [Song]!
+    isPublished: BOOL
+  ): Album
+  updateAlbum(
+    title: String,
+    description: String,
+    by: Artist
+  )
+  deleteAlbum
+}
+
+type User {
+  userId: ID!
+  artist: Artist
+  joinedAt: Int
 }
 
 type Artist {
@@ -39,33 +64,28 @@ type Artist {
   name: String!
   songs: [Song]
   albums: [Album]
-  joinedAt: Int!
-  imageSources: [String!]!
+  joinedAt: Int
+  imageSources: [String]
+  user: User
 }
 
 type Song {
   songId: ID
   title: String!
-  artists: [Artist]!
-  by: User
+  artists: [String]!
+  by: Artist
   audioSources: [String!]!
   imageSources: [String!]!
-  createdAt: Int!
+  createdAt: Int
 }
 
 type Album {
   albumId: ID!
   title: String!
   createdAt: Int!
-  by: User
-  artists: [Artist!]!
+  by: Artist!
+  artists: [String]!
   songs: [Song!]!
-}
-
-type User {
-  userId: ID!
-  name: String!
-  joinedAt: Int!
 }
 
 schema {

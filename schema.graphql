@@ -14,7 +14,7 @@ type Query {
 type Mutation {
   createUser: User
   updateUser(
-    userId: ID!
+    userId: ID!,
     artistId: ID
   ):User
 
@@ -49,8 +49,7 @@ type Mutation {
     title: String,
     description: String,
     by: Artist
-  )
-  deleteAlbum
+  ): Album
 }
 
 type User {

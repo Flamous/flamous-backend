@@ -86,6 +86,11 @@ custom:
         config:
           tableName:
             Ref: AlbumsTable
+      - type: AMAZON_DYNAMODB
+        name: usersTable
+        config:
+          tableName:
+            Ref: UsersTable
 
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA

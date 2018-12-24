@@ -40,15 +40,14 @@ type Mutation {
   createAlbum(
     title: String!,
     description: String,
-    by: Artist!,
+    artistId: ID!,
     artists: [String],
-    songs: [Song]!
     isPublished: Boolean
   ): Album
   updateAlbum(
     title: String,
     description: String,
-    by: Artist
+    artistId: ID
   ): Album
 }
 

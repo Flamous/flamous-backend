@@ -1,17 +1,11 @@
-#set($attribs = $util.dynamodb.toMapValues($ctx.args))
-#set($attribs.user = $ctx.identity.username)
-#set($attribs.accountId = $ctx.identity.accountId)
+#set($attribs = $ctx.args)
+#set($attribs.createdBy = $ctx.identity.username)
+
 {
   "version": "2017-02-28",
   "operation": "PutItem",
   "key": {
-    "artistId": $util.dynamodb.toDynamoDBJson($ctx.args.artistId)
+    "artistId": $util.autoId()
   },
-  "attributeValues": $util.toJson($attribs),
-  "condition": {
-    "expression": "attribute_not_exists(#artistId)",
-    "expressionNames": {
-      "#artistId": "artistId",
-    },
-  },
+  "attributeValues": $util.dynamodb.toMapValuesJson($attribs)
 }

@@ -63,7 +63,6 @@ custom:
         field: songList
         request: "songList-request.vlt"
         response: "songList-response.vlt"
-    dataSources:
     schema: schema.graphql
     dataSources:
       - type: AMAZON_DYNAMODB

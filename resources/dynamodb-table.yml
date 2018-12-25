@@ -15,7 +15,7 @@ Resources:
         ReadCapacityUnits: ${self:custom.tableThroughput}
         WriteCapacityUnits: ${self:custom.tableThroughput}
       GlobalSecondaryIndexes:
-        - IndexName: SongsArtistIndex
+        - IndexName: artist-songs-index
           KeySchema:
             - AttributeName: artistId
               KeyType: HASH

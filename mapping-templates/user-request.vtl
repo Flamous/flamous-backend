@@ -2,6 +2,6 @@
   "version": "2017-02-28",
   "operation": "GetItem",
   "key": {
-    "userId": $util.dynamodb.toString($ctx.args.userId)
+    "userId": $util.dynamodb.toStringJson($ctx.args.userId)
   }
 }

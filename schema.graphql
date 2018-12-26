@@ -12,7 +12,7 @@ type Query {
 }
 
 type Mutation {
-  createUser: User
+  createUser(userId: ID!): User
   updateUser(
     userId: ID!,
     artistId: ID

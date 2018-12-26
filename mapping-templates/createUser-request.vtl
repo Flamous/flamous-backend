@@ -2,7 +2,7 @@
   "version": "2017-02-28",
   "operation": "PutItem",
   "key": {
-    "userId": "$util.dynamodb.toString($ctx.args.userId)"
+    "userId": $util.dynamodb.toStringJson($ctx.args.userId)
   },
   "condition": {
     "expression": "attribute_not_exists(#artistId)",

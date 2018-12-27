@@ -1,0 +1,9 @@
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "albumId": $util.dynamodb.toStringJson($util.autoId()),
+    "artistId": $util.dynamodb.toStringJson($ctx.args.artistId)
+  },
+  "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args)
+}

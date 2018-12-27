@@ -1,0 +1,64 @@
+#if($ctx.identity.username != $ctx.args.userId)
+  $util.unauthorized()
+#end
+
+{
+  "version": "2018-05-29",
+  "operation": "UpdateItem",
+  "key": {
+    "albumId": { "S": "${context.arguments.albumId}" }
+  },
+
+  ## Mostly copied from AWS AppSync docs: https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-dynamodb.html#aws-appsync-resolver-mapping-template-reference-dynamodb-updateitem
+  ## Set up some space to keep track of things we're updating **
+  #set( $expNames  = {} )
+  #set( $expValues = {} )
+  #set( $expSet = {} )
+  #set( $expAdd = {} )
+  #set( $expRemove = [] )
+
+  ## Iterate through each argument, skipping "id" and "expectedVersion" **
+  #foreach( $entry in $context.arguments.entrySet() )
+      #if( $entry.key != "userId" )
+          #if( (!$entry.value) && ("$!{entry.value}" == "") )
+              ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **
+
+              #set( $discard = ${expRemove.add("#${entry.key}")} )
+              $!{expNames.put("#${entry.key}", "$entry.key")}
+          #else
+              ## Otherwise set (or update) the attribute on the item in DynamoDB **
+
+              $!{expSet.put("#${entry.key}", ":${entry.key}")}
+              $!{expNames.put("#${entry.key}", "$entry.key")}
+
+              #if( $entry.key == "ups" || $entry.key == "downs" )
+                  $!{expValues.put(":${entry.key}", { "N" : $entry.value })}
+              #else
+                  $!{expValues.put(":${entry.key}", { "S" : "${entry.value}" })}
+              #end
+          #end
+      #end
+  #end
+
+  ## Start building the update expression, starting with attributes we're going to SET **
+  #set( $expression = "" )
+  #if( !${expSet.isEmpty()} )
+      #set( $expression = "SET" )
+      #foreach( $entry in $expSet.entrySet() )
+          #set( $expression = "${expression} ${entry.key} = ${entry.value}" )
+          #if ( $foreach.hasNext )
+              #set( $expression = "${expression}," )
+          #end
+      #end
+  #end
+
+  "update": {
+    "expression": "${expression}",
+    #if( !${expNames.isEmpty()} )
+      ,"expressionNames" : $utils.toJson($expNames)
+    #end
+    #if( !${expValues.isEmpty()} )
+      ,"expressionValues" : $utils.toJson($expValues)
+    #end
+  }
+}

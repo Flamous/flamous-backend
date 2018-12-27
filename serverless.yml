@@ -65,17 +65,17 @@ custom:
         response: "artist-response.vtl"
 
       - dataSource: albumsTable
-        type: query
+        type: Query
         field: album
         request: album-request.vtl
         response: album-response.vtl
       - dataSource: albumsTable
-        type: mutation
+        type: Mutation
         field: createAlbum
         request: createAlbum-request.vtl
         response: createAlbum-response.vtl
       - dataSource: albumsTable
-        type: mutation
+        type: Mutation
         field: updateAlbum
         request: updateAlbum-request.vtl
         response: updateAlbum-response.vtl

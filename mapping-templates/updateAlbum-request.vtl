@@ -1,7 +1,3 @@
-#if($ctx.identity.username != $ctx.args.userId)
-  $util.unauthorized()
-#end
-
 {
   "version": "2018-05-29",
   "operation": "UpdateItem",
@@ -19,7 +15,7 @@
 
   ## Iterate through each argument, skipping "id" and "expectedVersion" **
   #foreach( $entry in $context.arguments.entrySet() )
-      #if( $entry.key != "userId" )
+      #if( $entry.key != "albumId" )
           #if( (!$entry.value) && ("$!{entry.value}" == "") )
               ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **
 

@@ -51,24 +51,24 @@ custom:
       - dataSource: artistsTable
         type: Mutation
         field: createArtist
-        request: "createArtist-request.vlt"
-        response: "createArtist-response.vlt"
+        request: "createArtist-request.vtl"
+        response: "createArtist-response.vtl"
       - dataSource: artistsTable
         type: Query
         field: artist
-        request: "artist-request.vlt"
-        response: "artist-response.vlt"
+        request: "artist-request.vtl"
+        response: "artist-response.vtl"
 
       - dataSource: songsTable
         type: Query
         field: song
-        request: "song-request.vlt"
-        response: "song-response.vlt"
+        request: "song-request.vtl"
+        response: "song-response.vtl"
       - dataSource: songsTable
         type: Query
         field: songList
-        request: "songList-request.vlt"
-        response: "songList-response.vlt"
+        request: "songList-request.vtl"
+        response: "songList-response.vtl"
     schema: schema.graphql
     dataSources:
       - type: AMAZON_DYNAMODB

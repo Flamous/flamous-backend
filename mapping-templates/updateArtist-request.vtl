@@ -2,9 +2,9 @@
 #set($attribs.user = $ctx.identity.username)
 {
   "version": "2017-02-28",
-  "operation": "PutItem",
+  "operation": "UpdateItem",
   "key": {
-    "artistId":$util.dynamodb.toDynamoDBJson($util.autoId())
+    "artistId": $util.dynamodb.toDynamoDBJson($util.autoId())
   },
   "attributeValues": $util.toJson($attribs),
   "condition": {

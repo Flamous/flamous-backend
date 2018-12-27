@@ -51,6 +51,12 @@ type Mutation {
     title: String,
     description: String
   ): Album
+
+  createSong(
+    albumId: ID!,
+    title: String!,
+    artists: [String]
+  ): Song
 }
 
 type User {

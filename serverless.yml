@@ -47,6 +47,11 @@ custom:
         field: createUser
         request: "createUser-request.vtl"
         response: "createUser-response.vtl"
+      - dataSource: usersTable
+        type: Mutation
+        field: updateUser
+        request: "updateUser-request.vtl"
+        response: "updateUser-response.vtl"
 
       - dataSource: artistsTable
         type: Mutation

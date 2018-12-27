@@ -15,7 +15,8 @@ type Mutation {
   createUser(userId: ID!): User
   updateUser(
     userId: ID!,
-    artistId: ID
+    artistId: ID,
+    name: String
   ):User
 
   createArtist(

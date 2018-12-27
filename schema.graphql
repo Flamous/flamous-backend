@@ -39,16 +39,17 @@ type Mutation {
   # deleteSong
 
   createAlbum(
+    artistId: ID!,
     title: String!,
     description: String,
-    artistId: ID!,
     artists: [String],
     isPublished: Boolean
   ): Album
   updateAlbum(
+    albumId: ID!
+    artistId: ID!,
     title: String,
-    description: String,
-    artistId: ID
+    description: String
   ): Album
 }
 
@@ -81,10 +82,10 @@ type Song {
 type Album {
   albumId: ID!
   title: String!
-  createdAt: Int!
+  createdAt: Int
   by: Artist!
   artists: [String]!
-  songs: [Song!]!
+  songs: [Song]!
 }
 
 schema {

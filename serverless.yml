@@ -64,6 +64,22 @@ custom:
         request: "artist-request.vtl"
         response: "artist-response.vtl"
 
+      - dataSource: albumsTable
+        type: query
+        field: album
+        request: album-request.vtl
+        response: album-respone.vtl
+      - dataSource: albumsTable
+        type: mutation
+        field: createAlbum
+        request: createAlbum-request.vtl
+        response: createAlbum-respone.vtl
+      - dataSource: albumsTable
+        type: mutation
+        field: updateAlbum
+        request: updateAlbum-request.vtl
+        response: updateAlbum-respone.vtl
+
       - dataSource: songsTable
         type: Query
         field: song

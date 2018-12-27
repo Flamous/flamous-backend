@@ -68,17 +68,17 @@ custom:
         type: query
         field: album
         request: album-request.vtl
-        response: album-respone.vtl
+        response: album-response.vtl
       - dataSource: albumsTable
         type: mutation
         field: createAlbum
         request: createAlbum-request.vtl
-        response: createAlbum-respone.vtl
+        response: createAlbum-response.vtl
       - dataSource: albumsTable
         type: mutation
         field: updateAlbum
         request: updateAlbum-request.vtl
-        response: updateAlbum-respone.vtl
+        response: updateAlbum-response.vtl
 
       - dataSource: songsTable
         type: Query

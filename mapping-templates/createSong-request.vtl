@@ -4,5 +4,7 @@
   "key": {
     "songId": { "S": "${util.autoId()}" }
   },
-  "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args)
+  $util.quiet(#set( $attrValues = $ctx.args ))
+  $util.quiet(#set( $attrValues.owner = $ctx.identity.username ))
+  "attributeValues": $util.dynamodb.toMapValuesJson($attrValues)
 }

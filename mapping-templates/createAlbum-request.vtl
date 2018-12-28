@@ -5,5 +5,7 @@
     "albumId": $util.dynamodb.toStringJson($util.autoId()),
     "artistId": $util.dynamodb.toStringJson($ctx.args.artistId)
   },
-  "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args)
+  $util.quiet(#set( $attrValues = $ctx.args) )
+  $util.quiet(#set( $attrValues.owner = "${$ctx.identity.username}" ))
+  "attributeValues": $util.dynamodb.toMapValuesJson($attrValues)
 }

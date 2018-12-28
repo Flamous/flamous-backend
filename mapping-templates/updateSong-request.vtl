@@ -68,5 +68,11 @@
     #if( !${expValues.isEmpty()} )
       ,"expressionValues" : $utils.toJson($expValues)
     #end
+  },
+  "condition": {
+    "expression": "owner = :username",
+    "expressionValues": {
+      ":username": $context.identity.username
+    }
   }
 }

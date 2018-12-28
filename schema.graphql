@@ -14,7 +14,7 @@ type Query {
 type Mutation {
   createUser: User
   updateUser(
-    userId: ID!,
+    userId: ID,
     artistId: ID,
     name: String
   ):User

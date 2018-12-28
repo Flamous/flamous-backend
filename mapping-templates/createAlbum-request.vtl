@@ -1,3 +1,6 @@
+#set( $attrValues = $ctx.args)
+#set( $attrValues.owner = "${$ctx.identity.username}" )
+
 {
   "version": "2018-05-29",
   "operation": "PutItem",
@@ -5,7 +8,5 @@
     "albumId": $util.dynamodb.toStringJson($util.autoId()),
     "artistId": $util.dynamodb.toStringJson($ctx.args.artistId)
   },
-  $util.quiet(#set( $attrValues = $ctx.args) )
-  $util.quiet(#set( $attrValues.owner = "${$ctx.identity.username}" ))
   "attributeValues": $util.dynamodb.toMapValuesJson($attrValues)
 }

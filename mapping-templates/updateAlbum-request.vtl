@@ -48,6 +48,18 @@
       #end
   #end
 
+  ## Continue building the update expression, adding attributes we're going to REMOVE **
+  #if( !${expRemove.isEmpty()} )
+      #set( $expression = "${expression} REMOVE" )
+
+      #foreach( $entry in $expRemove )
+          #set( $expression = "${expression} ${entry}" )
+          #if ( $foreach.hasNext )
+              #set( $expression = "${expression}," )
+          #end
+      #end
+  #end
+
   "update": {
     "expression": "${expression}"
     #if( !${expNames.isEmpty()} )
@@ -56,5 +68,11 @@
     #if( !${expValues.isEmpty()} )
       ,"expressionValues" : $utils.toJson($expValues)
     #end
+  },
+  "condition": {
+    "expression": "owner == :username",
+    "expressionValues": {
+      ":username": { "S": "${ctx.identity.username}" }
+    }
   }
 }

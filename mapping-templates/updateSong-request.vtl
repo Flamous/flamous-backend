@@ -1,12 +1,8 @@
-#if($ctx.identity.username != $ctx.args.userId)
-  $util.unauthorized()
-#end
-
 {
-  "version" : "2018-05-29",
-  "operation" : "UpdateItem",
-  "key" : {
-    "userId": { "S": "${context.identity.username}"}
+  "version": "2018-05-29",
+  "operation": "UpdateItem",
+  "key": {
+    "songId": { "S": "${context.arguments.songId}" }
   },
 
   ## Mostly copied from AWS AppSync docs: https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-dynamodb.html#aws-appsync-resolver-mapping-template-reference-dynamodb-updateitem
@@ -19,7 +15,7 @@
 
   ## Iterate through each argument, skipping "id" and "expectedVersion" **
   #foreach( $entry in $context.arguments.entrySet() )
-      #if( $entry.key != "userId" )
+      #if( $entry.key != "songId" )
           #if( (!$entry.value) && ("$!{entry.value}" == "") )
               ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **
 
@@ -52,17 +48,6 @@
       #end
   #end
 
-  ## Continue building the update expression, adding attributes we're going to ADD **
-  ## #if( !${expAdd.isEmpty()} )
-  ##     #set( $expression = "${expression} ADD" )
-  ##     #foreach( $entry in $expAdd.entrySet() )
-  ##         #set( $expression = "${expression} ${entry.key} ${entry.value}" )
-  ##         #if ( $foreach.hasNext )
-  ##             #set( $expression = "${expression}," )
-  ##         #end
-  ##     #end
-  ## #end
-
   ## Continue building the update expression, adding attributes we're going to REMOVE **
   #if( !${expRemove.isEmpty()} )
       #set( $expression = "${expression} REMOVE" )
@@ -75,18 +60,17 @@
       #end
   #end
 
-  ## Finally, write the update expression into the document, along with any expressionNames and expressionValues **
-  "update" : {
-      "expression" : "${expression}"
-      #if( !${expNames.isEmpty()} )
-          ,"expressionNames" : $utils.toJson($expNames)
-      #end
-      #if( !${expValues.isEmpty()} )
-          ,"expressionValues" : $utils.toJson($expValues)
-      #end
+  "update": {
+    "expression": "${expression}"
+    #if( !${expNames.isEmpty()} )
+      ,"expressionNames" : $utils.toJson($expNames)
+    #end
+    #if( !${expValues.isEmpty()} )
+      ,"expressionValues" : $utils.toJson($expValues)
+    #end
   },
   "condition": {
-    "expression": "userId == :username",
+    "expression": "owner == :username",
     "expressionValues": {
       ":username": { "S": "${ctx.identity.username}" }
     }

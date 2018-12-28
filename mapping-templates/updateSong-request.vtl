@@ -70,7 +70,7 @@
     #end
   },
   "condition": {
-    "expression": "contains(owner, :username)",
+    "expression": "begins_with(owner, :username)",
     "expressionValues": {
       ":username": { "S": "${context.identity.username}" }
     }

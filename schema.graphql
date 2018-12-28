@@ -47,7 +47,7 @@ type Mutation {
   ): Album
   updateAlbum(
     albumId: ID!
-    artistId: ID!,
+    artistId: ID,
     title: String,
     description: String,
     artists: [String],

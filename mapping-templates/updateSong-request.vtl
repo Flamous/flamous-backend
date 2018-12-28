@@ -70,9 +70,9 @@
     #end
   },
   "condition": {
-    "expression": "owner = :username",
+    "expression": "contains(owner, :username)",
     "expressionValues": {
-      ":username": $util.dynamodb.toStringJson($context.identity.username)
+      ":username": { "S": "${context.identity.username}" }
     }
   }
 }

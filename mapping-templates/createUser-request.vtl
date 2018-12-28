@@ -5,9 +5,9 @@
     "userId": { "S": "${ctx.identity.username}" }
   },
   "condition": {
-    "expression": "attribute_not_exists(#artistId)",
+    "expression": "attribute_not_exists(#userId)",
     "expressionNames": {
-      "#artistId": "artistId"
+      "#userId": "${ctx.identity.username}"
     }
   }
 }

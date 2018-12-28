@@ -1,5 +1,5 @@
 #set( $attrValues = $ctx.args)
-#set( $attrValues.owner = "${$ctx.identity.username}" )
+#set( $attrValues.owner = $ctx.identity.username )
 
 {
   "version": "2018-05-29",

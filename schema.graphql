@@ -49,7 +49,9 @@ type Mutation {
     albumId: ID!
     artistId: ID!,
     title: String,
-    description: String
+    description: String,
+    artists: [String],
+    isPublished: Boolean
   ): Album
 
   createSong(
@@ -88,6 +90,8 @@ type Song {
 type Album {
   albumId: ID!
   title: String!
+  description: String,
+  isPublished: Boolean!,
   createdAt: Int
   by: Artist!
   artists: [String]!

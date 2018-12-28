@@ -86,7 +86,7 @@
       #end
   },
   "condition": {
-    "expression": "userId == :username",
+    "expression": "userId = :username",
     "expressionValues": {
       ":username": { "S": "${ctx.identity.username}" }
     }

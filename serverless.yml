@@ -95,6 +95,11 @@ custom:
         field: createSong
         request: createSong-request.vtl
         response: createSong-response.vtl
+      - dataSource: songsTable
+        type: Mutation
+        field: updateSong
+        request: updateSong-request.vtl
+        response: updateSong-response.vtl
     schema: schema.graphql
     dataSources:
       - type: AMAZON_DYNAMODB

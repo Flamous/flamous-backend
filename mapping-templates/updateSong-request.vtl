@@ -72,7 +72,7 @@
   "condition": {
     "expression": "owner = :username",
     "expressionValues": {
-      ":username": $context.identity.username
+      ":username": "${context.identity.username}"
     }
   }
 }

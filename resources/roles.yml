@@ -22,6 +22,8 @@ Resources:
               -
                 Effect: "Allow"
                 Action:
-                  - "cloudwatch:*"
+                  - "logs:CreateLogGroup"
+                    "logs:CreateLogStream"
+                    "logs:PutLogEvents"
                 Resource:
                   - "*"

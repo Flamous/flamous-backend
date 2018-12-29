@@ -70,9 +70,12 @@
     #end
   },
   "condition": {
-    "expression": "owner = :username",
+    "expression": "#owner = :username",
     "expressionValues": {
       ":username": { "S": "${ctx.identity.username}" }
+    },
+    "expressionNames": {
+      "#owner": "owner"
     }
   }
 }

@@ -84,6 +84,11 @@ custom:
         field: updateAlbum
         request: updateAlbum-request.vtl
         response: updateAlbum-response.vtl
+      - dataSource: albumsTable
+        type: Query
+        field: getArtistAlbums
+        request: getArtistAlbums-request.vtl
+        response: getArtistAlbums-response.vtl
 
       - dataSource: songsTable
         type: Query

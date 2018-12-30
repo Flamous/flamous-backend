@@ -6,6 +6,7 @@ type Query {
 
   album(albumId: ID!): Album
   albumList(artistId: ID!, top: Int): [Album]!
+  getArtistAlbums(artistId: ID!): [Album!]!
 
   song(songId: ID): Song
   songList(artistId: ID!, top: Int): [Song]!

@@ -63,6 +63,11 @@ custom:
         field: artist
         request: "artist-request.vtl"
         response: "artist-response.vtl"
+      - dataSource: artistsTable
+        type: Mutation
+        field: updateArtist
+        request: "updateArtist-request.vtl"
+        response: "updateArtist-response.vtl"
 
       - dataSource: albumsTable
         type: Query

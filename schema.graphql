@@ -69,6 +69,7 @@ type Mutation {
 
 type User {
   userId: ID!
+  artistId: ID,
   artist: Artist
   joinedAt: Int
 }

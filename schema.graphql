@@ -101,9 +101,9 @@ type Album {
   description: String,
   isPublished: Boolean!,
   createdAt: Int
-  by: Artist!
-  artists: [String]!
-  songs: [Song]!
+  by: Artist
+  artists: [String]
+  songs: [Song]
 }
 
 schema {

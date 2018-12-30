@@ -68,6 +68,10 @@ type Mutation {
   ): Song
 }
 
+type Subscription {
+  onCreatedAlbum(artistId: ID!): Album
+  @aws_subscribe(mutations: ["createAlbum"])
+}
 type User {
   userId: ID!
   artistId: ID,
@@ -109,4 +113,5 @@ type Album {
 schema {
   query: Query
   mutation: Mutation
+  subscription: Subscription
 }

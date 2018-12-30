@@ -66,6 +66,18 @@ Resources:
           ProvisionedThroughput:
             ReadCapacityUnits: ${self:custom.tableThroughput}
             WriteCapacityUnits: ${self:custom.tableThroughput}
+        - IndexName: artist-albums-index
+          KeySchema:
+            - AttributeName: artistId
+              KeyType: HASH
+            - AttributeName: albumId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: ${self:custom.tableThroughput}
+            WriteCapacityUnits: ${self:custom.tableThroughput}
+
   ArtistsTable:
     Type: AWS::DynamoDB::Table
     Properties:

@@ -1,0 +1,11 @@
+{
+  "version": "2018-05-29",
+  "operation": "Query",
+  "query": {
+    "expression": "artistId = :artistId",
+    "expressionValues": {
+      ":artistId": { "S": "${ctx.args.artistId}" }
+    }
+  },
+  "index": "artist-albums-index"
+}

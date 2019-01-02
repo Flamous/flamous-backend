@@ -85,6 +85,11 @@ custom:
         request: updateAlbum-request.vtl
         response: updateAlbum-response.vtl
       - dataSource: albumsTable
+        type: Mutation
+        field: deleteAlbum
+        request: deleteAlbum-request.vtl
+        response: deleteAlbum-response.vtl
+      - dataSource: albumsTable
         type: Query
         field: getArtistAlbums
         request: getArtistAlbums-request.vtl

@@ -1,0 +1,16 @@
+{
+  "version": "2018-05-29",
+  "operation": "DeleteItem"
+  "key": {
+    "albumId": { "S": "${ctx.args.albumId}" }
+  },
+  "condition": {
+    "expression": "#owner = :user",
+    "expressionValues": {
+      ":user": { "S": "${ctx.identity.username}" }
+    },
+    "expressionNames": {
+      "#owner": "owner"
+    }
+  }
+}

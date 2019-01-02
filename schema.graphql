@@ -54,6 +54,7 @@ type Mutation {
     artists: [String],
     isPublished: Boolean
   ): Album
+  deleteAlbum(albumId: ID!)
 
   createSong(
     albumId: ID!,
@@ -70,7 +71,7 @@ type Mutation {
 
 type Subscription {
   onCreatedAlbum(artistId: ID!): Album
-  @aws_subscribe(mutations: ["createAlbum"])
+    @aws_subscribe(mutations: ["createAlbum"])
 }
 type User {
   userId: ID!

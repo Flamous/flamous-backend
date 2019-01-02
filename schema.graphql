@@ -54,7 +54,7 @@ type Mutation {
     artists: [String],
     isPublished: Boolean
   ): Album
-  deleteAlbum(albumId: ID!)
+  deleteAlbum(albumId: ID!): Album
 
   createSong(
     albumId: ID!,

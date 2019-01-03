@@ -95,7 +95,7 @@ Resources:
                       - '{cognito-identity.amazonaws.com:sub}/*'
 
   CognitoUnauthRole:
-    Type: AWS::IAM:Role
+    Type: AWS::IAM::Role
     Properties:
       Path: /
       AssumeRolePolicyDocument:

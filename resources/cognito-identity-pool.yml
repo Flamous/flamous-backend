@@ -115,22 +115,22 @@ Resources:
                   Ref: CognitoIdentityPool
               'ForAnyValue:StringLike':
                 'cognito-identity.amazonaws.com:amr': unauthenticated
-        Policies:
-          - PolicyName: 'CognitoUnauthPolicy'
-            PolicyDocument:
-              Version: '2012-10-17'
-              Statement:
-                - Effect: 'Allow'
-                  Action:
-                    - 's3:GetObject'
-                  Resource:
-                    - Fn::Join:
-                      - ''
-                      -
-                        - Fn::GetAtt: [SongsBucket, Arn]
-                        - '/protected/'
-                        - '$'
-                        - '{cognito-identity.amazonaws.com:sub}/*'
+      Policies:
+        - PolicyName: 'CognitoUnauthPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 's3:GetObject'
+                Resource:
+                  - Fn::Join:
+                    - ''
+                    -
+                      - Fn::GetAtt: [SongsBucket, Arn]
+                      - '/protected/'
+                      - '$'
+                      - '{cognito-identity.amazonaws.com:sub}/*'
 
   CognitoUserGroup:
     Type: AWS::IAM::Group

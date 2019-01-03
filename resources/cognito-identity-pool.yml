@@ -75,13 +75,22 @@ Resources:
               # folder inside our S3 bucket
               - Effect: 'Allow'
                 Action:
-                  - 's3:*'
+                  - "s3:GetObject",
+                  - "s3:PutObject",
+                  - "s3:DeleteObject"
                 Resource:
                   - Fn::Join:
                     - ''
                     -
                       - Fn::GetAtt: [SongsBucket, Arn]
                       - '/private/'
+                      - '$'
+                      - '{cognito-identity.amazonaws.com:sub}/*'
+                  - Fn::Join:
+                    - ''
+                    -
+                      - Fn::GetAtt: [SongsBucket, Arn]
+                      - '/protected/'
                       - '$'
                       - '{cognito-identity.amazonaws.com:sub}/*'
 

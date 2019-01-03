@@ -100,9 +100,6 @@ Resources:
       Path: /
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
-        Principal:
-          Federated: 'cognito-identity.amazonaws.com'
-
         Statement:
           - Effect: 'Allow'
             Principal:

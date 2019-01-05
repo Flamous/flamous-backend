@@ -21,7 +21,7 @@ type Mutation {
   ):User
 
   createArtist(
-    name: String!,
+    name: String,
     associatedUser: ID
   ): Artist
 

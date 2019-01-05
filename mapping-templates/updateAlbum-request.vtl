@@ -16,7 +16,7 @@
   ## Iterate through each argument, skipping "id" and "expectedVersion" **
   #foreach( $entry in $context.arguments.entrySet() )
       #if( $entry.key != "albumId" )
-          #if( ("$!{entry.value}" == "") )
+          #if( (!$entry.value) && ("$!{entry.value}" == "") )
               ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **
 
               #set( $discard = ${expRemove.add("#${entry.key}")} )
@@ -49,16 +49,16 @@
   #end
 
   ## Continue building the update expression, adding attributes we're going to REMOVE **
-  #if( !${expRemove.isEmpty()} )
-      #set( $expression = "${expression} REMOVE" )
+##   #if( !${expRemove.isEmpty()} )
+##       #set( $expression = "${expression} REMOVE" )
 
-      #foreach( $entry in $expRemove )
-          #set( $expression = "${expression} ${entry}" )
-          #if ( $foreach.hasNext )
-              #set( $expression = "${expression}," )
-          #end
-      #end
-  #end
+##       #foreach( $entry in $expRemove )
+##           #set( $expression = "${expression} ${entry}" )
+##           #if ( $foreach.hasNext )
+##               #set( $expression = "${expression}," )
+##           #end
+##       #end
+##   #end
 
   "update": {
     "expression": "${expression}"

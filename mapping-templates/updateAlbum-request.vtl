@@ -16,7 +16,7 @@
   ## Iterate through each argument, skipping "id" and "expectedVersion" **
   #foreach( $entry in $context.arguments.entrySet() )
       #if( $entry.key != "albumId" )
-          #if( (!$entry.value) && ("$!{entry.value}" == "") )
+          #if( ( ("$!{entry.value}" == "") )
               ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **
 
               #set( $discard = ${expRemove.add("#${entry.key}")} )

@@ -1,7 +1,7 @@
-#set($attribs = $ctx.args)
+## #set($attribs = $ctx.args)
 #set($attribs.owner = $ctx.identity.username)
 #set($artistId = $util.autoId())
-## $util.qr($ctx.stash.put("artistId", $artistId))
+$util.qr($ctx.stash.put("artistId", $artistId))
 
 {
   "version": "2018-05-29",

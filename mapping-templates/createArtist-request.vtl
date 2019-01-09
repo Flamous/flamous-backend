@@ -1,8 +1,6 @@
-#if ($ctx.args)
-  #set($attribs = $ctx.args)
-#else
-  #set($attribs = {})
-#end
+## #set($attribs = $ctx.args)
+
+#set($attribs = {})
 
 $util.qr($attribs.put("owner", $ctx.identity.username))
 #set($artistId = $util.autoId())

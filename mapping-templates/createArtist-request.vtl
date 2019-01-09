@@ -10,7 +10,7 @@ $util.qr($ctx.stash.put("artistId", $artistId))
   "version": "2018-05-29",
   "operation": "PutItem",
   "key": {
-    "artistId": $util.dynamodb.toStingJson($artistId)
+    "artistId": $util.dynamodb.toStringJson($artistId)
   },
   "attributeValues": $util.dynamodb.toMapValuesJson($attribs)
 }

@@ -1,11 +1,13 @@
 #set($attribs = $ctx.args)
 #set($attribs.owner = $ctx.identity.username)
+#set($artistId = $util.autoId())
+#set($ctx.stash.artistId = $artistId)
 
 {
   "version": "2017-02-28",
   "operation": "PutItem",
   "key": {
-    "artistId": { "S" : "$util.autoId()" }
+    "artistId": { "S" : "${artistId}" }
   },
   "attributeValues": $util.dynamodb.toMapValuesJson($attribs)
 }

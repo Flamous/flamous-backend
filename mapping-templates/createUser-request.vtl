@@ -4,6 +4,9 @@
   "key": {
     "userId": { "S": "${ctx.identity.username}" }
   },
+  "attributeValues": {
+    "artistId": { "S": "${ctx.stash.artistId}" }
+  },
   "condition": {
     "expression": "attribute_not_exists(userId)"
   }

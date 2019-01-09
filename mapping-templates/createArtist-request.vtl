@@ -1,4 +1,4 @@
-## #set($attribs = $ctx.args)
+#set($attribs = $util.defaultIfNull($ctx.args, {}))
 #set($attribs.owner = $ctx.identity.username)
 #set($artistId = $util.autoId())
 $util.qr($ctx.stash.put("artistId", $artistId))

@@ -54,7 +54,9 @@ type Mutation {
     title: String,
     description: String,
     artists: [String],
-    isPublished: Boolean
+    isPublished: Boolean,
+    hasCoverImage: Boolean,
+    coverImagePath: String
   ): Album
   deleteAlbum(albumId: ID!): Album
 

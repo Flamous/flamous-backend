@@ -20,6 +20,8 @@ type Mutation {
     name: String
   ):User
 
+  createUserAndArtist: User
+
   createArtist(
     name: String,
     associatedUser: ID

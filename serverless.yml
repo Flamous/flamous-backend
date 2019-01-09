@@ -53,6 +53,15 @@ custom:
         request: "updateUser-request.vtl"
         response: "updateUser-response.vtl"
 
+      - type: Mutation
+        kind: PIPELINE
+        field: createUserAndArtist
+        request: createUserAndArtist-before.vtl
+        response: createUserAndArtist-after.vtl
+        functions:
+          - createArtistFunction
+          - createUserFunction
+
       - dataSource: artistsTable
         type: Mutation
         field: createArtist
@@ -116,6 +125,16 @@ custom:
         request: updateSong-request.vtl
         response: updateSong-response.vtl
     schema: schema.graphql
+    functionConfigurations:
+      - dataSource: usersTable
+        name: createUserFunction
+        request: "createUser-request.vtl"
+        response: "createUser-response.vtl"
+      - dataSource: artistsTable
+        name: createArtistFunction
+        request: "createArtist-request.vtl"
+        response: "createArtist-response.vtl"
+
     dataSources:
       - type: AMAZON_DYNAMODB
         name: artistsTable

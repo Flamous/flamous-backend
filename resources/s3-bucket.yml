@@ -18,6 +18,27 @@ Resources:
               - HEAD
             MaxAge: 3000
 
+  
+  PublicReadPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: SongsBucket
+      PolicyDocument:
+        Statement: 
+          - 
+            Action: 
+              - "s3:GetObject"
+            Effect: "Allow"
+            Resource: 
+              Fn::Join: 
+                - ""
+                - 
+                  - "arn:aws:s3:::"
+                  - 
+                    Ref: SongsBucket
+                  - "/*"
+            Principal: "*"
 # Print out the name of the bucket that is created
 Outputs:
   SongsBucketName:

@@ -106,14 +106,14 @@ type Song {
 
 type Album {
   albumId: ID!
-  title: String!
+  title: String
   description: String,
-  isPublished: Boolean!,
+  isPublished: Boolean,
   createdAt: Int
+  lastUpdated: Int
   by: Artist
   artists: [String]
   songs: [Song]
-  hasCoverImage: Boolean
   coverImagePath: String
 }
 

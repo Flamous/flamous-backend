@@ -1,5 +1,6 @@
 #set( $attrValues = $ctx.args)
 #set( $attrValues.owner = $ctx.identity.username )
+#set( $attrValues.createdAt = $util.time.nowEpochSeconds() )
 
 {
   "version": "2018-05-29",

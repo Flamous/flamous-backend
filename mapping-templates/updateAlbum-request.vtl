@@ -36,6 +36,10 @@
       #end
   #end
 
+  ## Add lastUpdated timestamp
+  $util.qr( $expSet.put("lastUpdated", ":lastUpdated") )
+  $util.qr( $expValues.put(":lastUpdated", { "N": $util.time.nowEpochSeconds() }) )
+
   ## Start building the update expression, starting with attributes we're going to SET **
   #set( $expression = "" )
   #if( !${expSet.isEmpty()} )

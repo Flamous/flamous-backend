@@ -93,11 +93,14 @@ custom:
         field: updateAlbum
         request: updateAlbum-request.vtl
         response: updateAlbum-response.vtl
-      - dataSource: albumsTable
-        type: Mutation
+      - type: Mutation
         field: deleteAlbum
-        request: deleteAlbum-request.vtl
-        response: deleteAlbum-response.vtl
+        kind: PIPELINE
+        request: deleteAlbum-before.vtl
+        response: deleteAlbum-after.vtl
+        functions:
+          - deleteAlbumDataFunction
+          - deleteAlbumCoverFunction
       - dataSource: albumsTable
         type: Query
         field: getArtistAlbums
@@ -134,6 +137,14 @@ custom:
         name: createArtistFunction
         request: "createArtist-request.vtl"
         response: "createArtist-response.vtl"
+      - dataSource: albumsTable
+        name: deleteAlbumDataFunction
+        request: deleteAlbum-request.vtl
+        response: deleteAlbum-response.vtl
+      - dataSource: deleteAlbumCoverLambda
+        name: delteAlbumCoverFunction
+        request: deleteAlbumCover-request.vtl
+        response: deleteAlbumCover-response.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB
@@ -156,6 +167,11 @@ custom:
         config:
           tableName:
             Ref: UsersTable
+      - type: AWS_LAMBDA
+        name: deleteAlbumCoverLambda
+        config:
+          lambdaFunctionArn:
+            Fn::GetAtt: [deleteAlbumCover, Arn]
 
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA

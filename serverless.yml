@@ -188,6 +188,7 @@ provider:
 
 functions:
   deleteAlbumCover:
+    role: AppSyncLambdaRole
     handler: functions/deleteAlbumCover.main
 
 resources:

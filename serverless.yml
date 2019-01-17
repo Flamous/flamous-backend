@@ -170,14 +170,9 @@ provider:
   stage: dev
   region: eu-central-1
 
-# functions:
-#   graphql:
-#     handler: handler.graphql
-#     events:
-#       - http:
-#           path: graphql
-#           method: get
-#           cors: true
+functions:
+  deleteAlbumCover:
+    handler: functions/deleteAlbumCover.main
 
 resources:
   # DynamoDB

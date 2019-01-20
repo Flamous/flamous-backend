@@ -141,7 +141,7 @@ custom:
         name: deleteAlbumDataFunction
         request: deleteAlbum-request.vtl
         response: deleteAlbum-response.vtl
-      - dataSource: deleteAlbumCoverLambda
+      - dataSource: deleteAlbumCoverFunction
         name: delteAlbumCoverFunction
         request: deleteAlbumCover-request.vtl
         response: deleteAlbumCover-response.vtl

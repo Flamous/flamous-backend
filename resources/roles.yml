@@ -42,7 +42,7 @@ Resources:
       Policies:
         - PolicyName: myPolicyName
           PolicyDocument:
-            Version: '2017'
+            Version: '2012-10-17'
             Statement:
               - Effect: Allow
                 Action:

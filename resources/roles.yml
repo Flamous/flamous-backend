@@ -51,7 +51,7 @@ Resources:
                   - logs:PutLogEvents
                 Resource: 
                   - Fn::Join:
-                    - ''
+                    - ':'
                     -
                       - 'arn:aws:logs'
                       - Ref: 'AWS::Region'

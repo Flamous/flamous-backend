@@ -171,7 +171,7 @@ custom:
         name: deleteAlbumCoverLambda
         config:
           lambdaFunctionArn:
-            Fn::GetAtt: [deleteAlbumCover, Arn]
+            Fn::GetAtt: [DeleteAlbumCover, Arn]
 
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA
@@ -187,7 +187,7 @@ provider:
   region: eu-central-1
 
 functions:
-  deleteAlbumCover:
+  DeleteAlbumCover:
     role: AppSyncLambdaRole
     handler: functions/deleteAlbumCover.main
 

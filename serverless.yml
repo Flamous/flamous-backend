@@ -168,7 +168,7 @@ custom:
           tableName:
             Ref: UsersTable
       - type: AWS_LAMBDA
-        name: deleteAlbumCoverLambda
+        name: deleteAlbumCoverFunction
         config:
           lambdaFunctionArn:
             Fn::GetAtt: [DeleteAlbumCoverLambdaFunction, Arn]

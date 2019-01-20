@@ -50,8 +50,8 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: 
-                  - 'Fn::Join':
-                    - ':'
+                  - Fn::Join:
+                    - ''
                     -
                       - 'arn:aws:logs'
                       - Ref: 'AWS::Region'

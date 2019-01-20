@@ -5,7 +5,7 @@ tenant: christiankaindl
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
-  # - serverless-webpack
+  - serverless-webpack
   - serverless-offline
   - serverless-appsync-plugin
 

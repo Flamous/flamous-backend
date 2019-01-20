@@ -142,7 +142,7 @@ custom:
         request: deleteAlbum-request.vtl
         response: deleteAlbum-response.vtl
       - dataSource: deleteAlbumCoverFunction
-        name: delteAlbumCoverFunction
+        name: deleteAlbumCoverFunction
         request: deleteAlbumCover-request.vtl
         response: deleteAlbumCover-response.vtl
 

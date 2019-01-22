@@ -1,0 +1,35 @@
+- dataSource: usersTable
+  type: Query
+  field: user
+  request: "user-request.vtl"
+  response: "user-response.vtl"
+
+- dataSource: artistsTable
+  type: Query
+  field: artist
+  request: "artist-request.vtl"
+  response: "artist-response.vtl"
+
+- dataSource: albumsTable
+  type: Query
+  field: album
+  request: album-request.vtl
+  response: album-response.vtl
+
+- dataSource: albumsTable
+  type: Query
+  field: getArtistAlbums
+  request: getArtistAlbums-request.vtl
+  response: getArtistAlbums-response.vtl
+
+- dataSource: songsTable
+  type: Query
+  field: song
+  request: "song-request.vtl"
+  response: "song-response.vtl"
+
+- dataSource: songsTable
+  type: Query
+  field: songList
+  request: "songList-request.vtl"
+  response: "songList-response.vtl"

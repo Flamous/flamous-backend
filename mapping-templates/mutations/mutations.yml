@@ -1,0 +1,65 @@
+- dataSource: usersTable
+  type: Mutation
+  field: createUser
+  request: "createUser-request.vtl"
+  response: "createUser-response.vtl"
+
+- dataSource: usersTable
+  type: Mutation
+  field: updateUser
+  request: "updateUser-request.vtl"
+  response: "updateUser-response.vtl"
+
+- type: Mutation
+  kind: PIPELINE
+  field: createUserAndArtist
+  request: createUserAndArtist-before.vtl
+  response: createUserAndArtist-after.vtl
+  functions:
+    - createArtistFunction
+    - createUserFunction
+
+- dataSource: artistsTable
+  type: Mutation
+  field: createArtist
+  request: "createArtist-request.vtl"
+  response: "createArtist-response.vtl"
+
+- dataSource: artistsTable
+  type: Mutation
+  field: updateArtist
+  request: "updateArtist-request.vtl"
+  response: "updateArtist-response.vtl"
+
+- dataSource: albumsTable
+  type: Mutation
+  field: createAlbum
+  request: createAlbum-request.vtl
+  response: createAlbum-response.vtl
+
+- dataSource: albumsTable
+  type: Mutation
+  field: updateAlbum
+  request: updateAlbum-request.vtl
+  response: updateAlbum-response.vtl
+
+- type: Mutation
+  field: deleteAlbum
+  kind: PIPELINE
+  request: deleteAlbum-before.vtl
+  response: deleteAlbum-after.vtl
+  functions:
+    - deleteAlbumDataFunction
+    - deleteAlbumCoverFunction
+
+- dataSource: songsTable
+  type: Mutation
+  field: createSong
+  request: createSong-request.vtl
+  response: createSong-response.vtl
+
+- dataSource: songsTable
+  type: Mutation
+  field: updateSong
+  request: updateSong-request.vtl
+  response: updateSong-response.vtl

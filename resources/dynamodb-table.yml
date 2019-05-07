@@ -105,3 +105,64 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: ${self:custom.tableThroughput}
         WriteCapacityUnits: ${self:custom.tableThroughput}
+
+  MainTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-main
+      AttributeDefinitions:
+        - AttributeName: partition
+          AttributeType: S
+        - AttributeName: sort
+          AttributeType: S
+        - AttributeName: lsi-1
+          AttributeType: S
+        - AttributeName: lsi-2
+          AttributeType: S
+        - AttributeName: lsi-3
+          AttributeType: S
+      KeySchema:
+        - AttributeName: partition
+          KeyType: HASH
+        - AttributeName: sort
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+      LocalSecondaryIndexes:
+        - IndexName: lsi-1
+          KeySchema:
+            - AttributName: partition
+              KeyType: HASH
+            - AttributeName: lsi-1
+              KeyType: RANGE
+          Projection:
+            ProjectionType: INCLUDE
+              - sort
+        - IndexName: lsi-2
+          KeySchema:
+            - AttributName: partition
+              KeyType: HASH
+            - AttributeName: lsi-2
+              KeyType: RANGE
+          Projection:
+            ProjectionType: INCLUDE
+              - sort
+        - IndexName: lsi-3
+          KeySchema:
+            - AttributName: partition
+              KeyType: HASH
+            - AttributeName: lsi-3
+              KeyType: RANGE
+          Projection:
+            ProjectionType: INCLUDE
+              - sort
+      GlobalSecondaryIndexes:
+        - IndexName: gsi-1
+          KeySchema:
+            - AttributeName: sort
+              KeyType: HASH
+            - AttributeName: partition
+              KeyType: RANGE
+        Projection:
+          ProjectionType: INCLUDE
+          NonKeyAttributes:
+            -

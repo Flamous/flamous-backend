@@ -164,5 +164,3 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: INCLUDE
-            NonKeyAttributes:
-              -

@@ -79,11 +79,11 @@ custom:
         config:
           tableName:
             Ref: UsersTable
-      # - type: AMAZON_DYNAMODB
-      #   name: masterTable
-      #   config:
-      #     tableName:
-      #       Ref: MasterTable
+      - type: AMAZON_DYNAMODB
+        name: mainTable
+        config:
+          tableName:
+            Ref: MainTable
       - type: AWS_LAMBDA
         name: deleteAlbumCoverFunction
         config:

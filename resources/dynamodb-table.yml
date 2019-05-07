@@ -130,7 +130,7 @@ Resources:
       LocalSecondaryIndexes:
         - IndexName: lsi-1
           KeySchema:
-            - AttributName: partition
+            - AttributeName: partition
               KeyType: HASH
             - AttributeName: lsi-1
               KeyType: RANGE
@@ -140,7 +140,7 @@ Resources:
               - sort
         - IndexName: lsi-2
           KeySchema:
-            - AttributName: partition
+            - AttributeName: partition
               KeyType: HASH
             - AttributeName: lsi-2
               KeyType: RANGE
@@ -150,7 +150,7 @@ Resources:
               - sort
         - IndexName: lsi-3
           KeySchema:
-            - AttributName: partition
+            - AttributeName: partition
               KeyType: HASH
             - AttributeName: lsi-3
               KeyType: RANGE

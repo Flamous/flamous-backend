@@ -136,6 +136,7 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: INCLUDE
+            NonKeyAttributes:
               - sort
         - IndexName: lsi-2
           KeySchema:
@@ -145,6 +146,7 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: INCLUDE
+            NonKeyAttributes:
               - sort
         - IndexName: lsi-3
           KeySchema:
@@ -154,6 +156,7 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: INCLUDE
+            NonKeyAttributes:
               - sort
       GlobalSecondaryIndexes:
         - IndexName: gsi-1

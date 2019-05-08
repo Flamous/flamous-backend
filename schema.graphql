@@ -1,69 +1,66 @@
+union Collaborator = Artist | String
+union Contributor = Artist | String
+
 type Query {
-  user(userId: ID): User
+  getUser(userId: ID): User
 
-  artist(artistId: ID): Artist
-  artistList(top: Int!): [Artist!]!
+  getArtist(artistId: ID): Artist
+  # artistList(top: Int!): [Artist!]!
 
-  album(albumId: ID!): Album
-  albumList(artistId: ID!, top: Int): [Album]!
-  getArtistAlbums(artistId: ID!): [Album!]!
+  getAlbumDetails(albumId: ID!): Album
+  getArtistAlbums(artistId: ID!, max: Int = 5): [Album!]!
 
-  song(songId: ID): Song
-  songList(artistId: ID!, top: Int): [Song]!
+  getRecentArtistReleases(artistId: ID!): [Album]!
+
+  getFeaturedArtists(max: Int = 7): [Artist!]!
+  getFeaturedAlbums(max: Int = 5): [Album!]!
+  getFeaturedSongs(max: Int = 8): [Song!]!
+  getFeaturedPlaylists(max: Int = 4): [Playlist!]!
+
+  getSongDetails(songId: ID): Song
+  getSongListDetails(songs: [ID!]!): [Song]!
 }
 
 type Mutation {
+  # USER
   createUser: User
   updateUser(
-    userId: ID,
-    artistId: ID,
-    name: String
-  ):User
+    userId: ID!,
+    user: UserInput!
+  ): User
 
   createUserAndArtist: User
 
+  # ARTIST
   createArtist(
-    name: String,
-    associatedUser: ID
+    userId: ID!,
+    artist: ArtistInput
   ): Artist
-
   updateArtist(
     artistId: ID!,
-    name: String,
-    associatedUser: ID
+    artist: ArtistInput!
   ): Artist
-
   deleteArtist(
     artistId: ID!
   ): Artist
 
-  # createSong
-  # updateSong
-  # deleteSong
 
+  # ALBUM
   createAlbum(
-    artistId: ID!,
-    title: String!,
-    description: String,
-    artists: [String],
-    isPublished: Boolean
+    albumData: AlbumInput!
   ): Album
   updateAlbum(
-    albumId: ID!
-    artistId: ID,
-    title: String,
-    description: String,
-    artists: [String],
-    isPublished: Boolean,
-    hasCoverImage: Boolean,
-    coverImagePath: String
+    albumId: ID!,
+    albumData: AlbumInput!
   ): Album
   deleteAlbum(albumId: ID!): Album
 
+  # SONG
   createSong(
     albumId: ID!,
     title: String!,
-    artists: [String]
+    artist: Artist!,
+    contributors: [Artist]
   ): Song
   updateSong(
     songId: ID!,
@@ -79,42 +76,85 @@ type Subscription {
 }
 type User {
   userId: ID!
-  artistId: ID,
   artist: Artist
   joinedAt: Int
+  email: String
+  name: String
+  username: Sting
 }
 
 type Artist {
   artistId: ID!
   name: String!
-  songs: [Song]
-  albums: [Album]
+  songs: [Song]!
+  albums: [Album]!
+  playlists: [Playlist]!
   joinedAt: Int
-  imageSources: [String]
+  imageSource: String
   user: User
+  status: String!
 }
 
 type Song {
-  songId: ID
+  songId: ID!
   title: String!
-  artists: [String]!
-  by: Artist
-  audioSources: [String!]!
-  imageSources: [String!]!
-  createdAt: Int
+  contributors: [Contributor]!
+  artist: Artist!
+  album: Album!
+  audioSource: String
+  imageSource: String
+  releaseAt: Int
+}
+
+type Playlist {
+  playlistId: ID!
+  title: String!
+  songs: [Song]!
+  artist: Artist!
+  collaborators: [Collaborator]
 }
 
 type Album {
   albumId: ID!
-  title: String
-  description: String,
-  isPublished: Boolean,
-  createdAt: Int
-  lastUpdated: Int
-  by: Artist
-  artists: [String]
-  songs: [Song]
-  coverImagePath: String
+  title: String!
+  artist: Artist!
+  story: AWSJSON,
+  releasedDate: AWSDateTime
+  createdAt: AWSTimestamp
+  lastUpdated: AWSTimestamp
+  contributors: [Contributor]
+  songs: [Song]!
+  imageSource: String
+}
+
+input AlbumInput {
+  title: String!
+  artist: Artist!
+  story: AWSJSON
+  releasedDate: AWSDateTime
+  createdAt: AWSTimestamp
+  lastUpdated: AWSTimestamp
+  contributors: [Contributor]
+  songs: [Song]!
+  imageSource: String
+}
+input SongInput {
+  title: String!
+  contributors: [Contributor]
+  artist: Artist!
+  album: String!
+  audioSource: String
+  imageSource: String
+  releasedDate: Int
+}
+input UserInput {
+    artistId: ID,
+    name: String,
+    email: AWSEmail
+}
+input ArtistInput {
+  username: ID,
+  name: String
 }
 
 schema {

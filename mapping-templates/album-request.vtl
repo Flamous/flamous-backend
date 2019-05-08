@@ -1,7 +1,14 @@
 {
   "version": "2018-05-29",
-  "operation": "GetItem",
-  "key": {
-    "albumId": { "S": "${context.arguments.albumId}" }
+  "operation": "Query",
+  "query": {
+    "expression": "#partition = :partition and begins_with(#sort, "ALBUM")",
+    "expressionValues": {
+      ":partition": { "S" : "{$ctx.args.albumId}"}
+    },
+    "expressionNames": {
+      "#partition": "partition"
+      "#sort": "sort"
+    }
   }
 }

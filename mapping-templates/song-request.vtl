@@ -2,6 +2,7 @@
     "version" : "2017-02-28",
     "operation" : "GetItem",
     "key" : {
-        "songId" : { "S" : "${context.arguments.songId}" }
+        "partition" : { "S" : "${context.arguments.songId}" },
+        "sort" : { "S" : "SONG"}
     }
 }

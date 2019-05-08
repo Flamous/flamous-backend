@@ -1,7 +1,8 @@
 {
-    "version" : "2017-02-28",
-    "operation" : "GetItem",
-    "key" : {
-        "artistId" : { "S" : "${context.arguments.artistId}" }
-    }
+  "version" : "2017-02-28",
+  "operation" : "GetItem",
+  "key" : {
+    "partition" : { "S" : "${context.arguments.artistId}" },
+    "sort": { "S" : "ARTIST" }
+  }
 }

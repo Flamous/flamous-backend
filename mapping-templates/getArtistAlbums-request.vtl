@@ -2,10 +2,15 @@
   "version": "2018-05-29",
   "operation": "Query",
   "query": {
-    "expression": "artistId = :artistId",
+    "expression": "#partition = :artistId and #sort = :albumId",
     "expressionValues": {
-      ":artistId": { "S": "${ctx.args.artistId}" }
+      ":artistId" : { "S": "ALBUM#${ctx.args.artistId}" },
+      ":albumId" : { "S" }
+    },
+    "expressionNames": {
+      "#sort": "partition", ## HASH and RANGE are swapped in gsi-1
+      "#partition": 'sort'
     }
   },
-  "index": "artist-albums-index"
+  "index": "gsi-1"
 }

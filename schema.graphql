@@ -26,7 +26,7 @@ type Mutation {
   createUser: User
   updateUser(
     userId: ID!,
-    user: UserInput!
+    userData: UserInput!
   ): User
 
   createUserAndArtist: User
@@ -34,11 +34,11 @@ type Mutation {
   # ARTIST
   createArtist(
     userId: ID!,
-    artist: ArtistInput
+    artistData: ArtistInput
   ): Artist
   updateArtist(
     artistId: ID!,
-    artist: ArtistInput!
+    artistData: ArtistInput!
   ): Artist
   deleteArtist(
     artistId: ID!
@@ -57,16 +57,15 @@ type Mutation {
 
   # SONG
   createSong(
-    albumId: ID!,
-    title: String!,
-    artist: Artist!,
-    contributors: [Artist]
+    songId: ID!,
+    songData: SongInput
   ): Song
   updateSong(
     songId: ID!,
-    albumId: ID,
-    title: String,
-    artists: [String]
+    songData: SongInput!
+  ): Song
+  deleteSong(
+    songId: ID!
   ): Song
 }
 
@@ -151,13 +150,14 @@ input SongInput {
   releasedDate: Int
 }
 input UserInput {
-    artistId: ID,
-    name: String,
+    artistId: ID
+    name: String
     email: AWSEmail
 }
 input ArtistInput {
-  username: ID,
+  username: ID
   name: String
+  imageSource: AWSURL
 }
 
 schema {

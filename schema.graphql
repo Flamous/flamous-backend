@@ -19,8 +19,6 @@ type Query {
 
   getSongDetails(songId: ID): Song
   getSongListDetails(songs: [ID!]!): [Song]!
-
-  getUser
 }
 
 type Mutation {

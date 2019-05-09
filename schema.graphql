@@ -139,13 +139,13 @@ input AlbumInput {
   createdAt: AWSTimestamp
   lastUpdated: AWSTimestamp
   contributors: [ContributorInput]
-  songs: [Song]!
+  songs: [SongInput]!
   imageSource: String
 }
 input SongInput {
   title: String!
   contributors: [ContributorInput]
-  artist: ArtistInput!
+  artist: ArtistInput
   album: String!
   audioSource: String
   imageSource: String

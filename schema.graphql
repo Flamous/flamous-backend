@@ -19,6 +19,8 @@ type Query {
 
   getSongDetails(songId: ID): Song
   getSongListDetails(songs: [ID!]!): [Song]!
+
+  getUser
 }
 
 type Mutation {
@@ -80,7 +82,7 @@ type User {
   joinedAt: Int
   email: String
   name: String
-  username: Sting
+  username: String
 }
 
 type Artist {

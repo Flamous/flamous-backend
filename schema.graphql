@@ -1,3 +1,5 @@
+## Collaborator means "shared right to edit" (e.g. in playlists)
+## Contributor means "helped make this" (e.g. in an Album)
 union Collaborator = Artist | NoPlatformUser
 union Contributor = Artist | NoPlatformUser
 
@@ -131,19 +133,19 @@ type Album {
 
 input AlbumInput {
   title: String!
-  artist: Artist!
+  artist: ArtistInput!
   story: AWSJSON
   releasedDate: AWSDateTime
   createdAt: AWSTimestamp
   lastUpdated: AWSTimestamp
-  contributors: [Contributor]
+  contributors: [ContributorInput]
   songs: [Song]!
   imageSource: String
 }
 input SongInput {
   title: String!
-  contributors: [Contributor]
-  artist: Artist!
+  contributors: [ContributorInput]
+  artist: ArtistInput!
   album: String!
   audioSource: String
   imageSource: String
@@ -158,6 +160,16 @@ input ArtistInput {
   username: ID
   name: String
   imageSource: AWSURL
+}
+input ContributorInput {
+  ## When an artistId is provided, `name` should be discarded. `name` gives the possibility to just type a person's name when he/she is not on the platform
+  artistId: ID
+  name: String
+}
+input CollaboratorInput {
+  ## When an artistId is provided, `name` should be discarded. `name` gives the possibility to just type a person's name when he/she is not on the platform
+  artistId: ID
+  name: String
 }
 
 schema {

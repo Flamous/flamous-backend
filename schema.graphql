@@ -1,5 +1,5 @@
-union Collaborator = Artist | String
-union Contributor = Artist | String
+union Collaborator = Artist | NoPlatformUser
+union Contributor = Artist | NoPlatformUser
 
 type Query {
   getUser(userId: ID): User
@@ -81,6 +81,9 @@ type User {
   email: String
   name: String
   username: String
+}
+type NoPlatformUser {
+  name: String!
 }
 
 type Artist {

@@ -11,7 +11,6 @@ Resources:
         - preferred_username
       AutoVerifiedAttributes:
         - email
-        - phone_number
       EmailVerificationMessage: "Here is your sign-up code for flamous.io: {####}"
       EmailVerificationSubject: 'Flamous Sign-Up code'
       EmailConfiguration:

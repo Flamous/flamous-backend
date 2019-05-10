@@ -32,6 +32,42 @@ Resources:
         - ADMIN_NO_SRP_AUTH
       GenerateSecret: false
 
+  CognitoUserPool2:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      # Generate a name based on the stage
+      UserPoolName: ${self:custom.stage}-user-pool2
+      # Set email as an alias
+      AliasAttributes:
+        - email
+        - phone_number
+        - preferred_username
+      AutoVerifiedAttributes:
+        - email
+        - phone_number
+      EmailVerificationMessage: "2Here is your sign-up code for flamous.io: {####}"
+      EmailVerificationSubject: 'Flamous Sign-Up code'
+      EmailConfiguration:
+        ReplyToEmailAddress: 'hello@flamous.io'
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+          RequireUppercase: false
+
+  CognitoUserPoolClient2:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      # Generate an app client name based on the stage
+      ClientName: ${self:custom.stage}-user-pool-client2
+      UserPoolId:
+        Ref: CognitoUserPool2
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: false
+
 # Print out the Id of the User Pool that is created
 Outputs:
   UserPoolId:
@@ -41,3 +77,11 @@ Outputs:
   UserPoolClientId:
     Value:
       Ref: CognitoUserPoolClient
+
+  UserPoolId2:
+    Value:
+      Ref: CognitoUserPool2
+
+  UserPoolClientId2:
+    Value:
+      Ref: CognitoUserPoolClient2

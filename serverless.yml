@@ -31,7 +31,7 @@ custom:
     userPoolConfig:
       awsRegion: ${self:provider.region}
       defaultAction: ALLOW
-      userPoolId: { Ref: CognitoUserPool }
+      userPoolId: { Ref: CognitoUserPoolUserPool1 }
     mappingTemplatesLocation: mapping-templates
     logConfig:
       loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
@@ -111,7 +111,7 @@ functions:
     handler: functions/pre-signup-validation.main
     events:
       - cognitoUserPool:
-          pool: CognitoUserPool
+          pool: UserPool1
           trigger: PreSignUp
 
 resources:

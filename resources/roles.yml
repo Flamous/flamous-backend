@@ -2,7 +2,7 @@ Resources:
   AppSyncLoggingServiceRole:
     Type: "AWS::IAM::Role"
     Properties:
-      RoleName: "CloudwatchLogging-AppSync-${self:service}-Role"
+      RoleName: ${self:custom.stage}-CloudwatchLogging-AppSync-${self:service}-Role
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -15,7 +15,7 @@ Resources:
               - "sts:AssumeRole"
       Policies:
         -
-          PolicyName: "CloudwatchLogging-${self:service}-Policy"
+          PolicyName: ${self:custom.stage}-CloudwatchLogging-${self:service}-Policy
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -40,7 +40,7 @@ Resources:
             Action:
               - sts:AssumeRole
       Policies:
-        - PolicyName: myPolicyName
+        - PolicyName: ${self:custom.stage}-CloudwatchLogging-Labmda-Appsync-${self:service}-Policy
           PolicyDocument:
             Version: '2012-10-17'
             Statement:

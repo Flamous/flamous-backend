@@ -107,6 +107,8 @@ functions:
   DeleteAlbumCover:
     role: AppSyncLambdaRole
     handler: functions/deleteAlbumCover.main
+  PreSignupValidation:
+    handler: functions/pre-signup-validation.main
 
 resources:
   # DynamoDB

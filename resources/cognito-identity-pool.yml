@@ -13,7 +13,7 @@ Resources:
             Ref: CognitoUserPoolClient
           ProviderName:
             Fn::GetAtt: [ "CognitoUserPool", "ProviderName" ]
-            
+
   # IAM roles
   CognitoIdentityPoolRoles:
     Type: AWS::Cognito::IdentityPoolRoleAttachment
@@ -23,7 +23,7 @@ Resources:
       Roles:
         authenticated:
           Fn::GetAtt: [CognitoAuthRole, Arn]
-          
+
   # IAM role used for authenticated users
   CognitoAuthRole:
     Type: AWS::IAM::Role
@@ -54,7 +54,7 @@ Resources:
                   - 'cognito-sync:*'
                   - 'cognito-identity:*'
                 Resource: '*'
-              
+
               # Allow users to invoke our API
               # - Effect: 'Allow'
               #   Action:
@@ -70,7 +70,7 @@ Resources:
               #         - ':'
               #         - Ref: ApiGatewayRestApi
               #         - '/*'
-              
+
               # Allow users to upload attachments to their
               # folder inside our S3 bucket
               - Effect: 'Allow'
@@ -138,7 +138,7 @@ Resources:
     Type: AWS::IAM::Group
     Properties:
       GroupName: ${self:custom.stage}-artist-group
-  
+
 # Print out the Id of the Identity Pool that is created
 Outputs:
   IdentityPoolId:

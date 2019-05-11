@@ -4,11 +4,8 @@ Resources:
     Properties:
       # Generate a name based on the stage
       UserPoolName: ${self:custom.stage}-user-pool
-      # Set email as an alias
-      AliasAttributes:
+      UsernameAttributes:
         - email
-        - phone_number
-        - preferred_username
       AutoVerifiedAttributes:
         - email
       EmailVerificationMessage: "Here is your sign-up code for flamous.io: {####}"

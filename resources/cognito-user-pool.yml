@@ -22,8 +22,6 @@ Resources:
           RequireNumbers: false
           RequireSymbols: false
           RequireUppercase: false
-      LambdaConfig:
-        PreSignUp: { Fn::GetAtt: [PreSignupValidation, Arn] }
 
   CognitoUserPoolClient:
     Type: AWS::Cognito::UserPoolClient

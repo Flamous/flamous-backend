@@ -2,7 +2,7 @@ Resources:
   AppSyncLoggingServiceRole:
     Type: "AWS::IAM::Role"
     Properties:
-      RoleName: "CloudwatchLogging-${self:service}-Role"
+      RoleName: "CloudwatchLogging-AppSync-${self:service}-Role"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -49,7 +49,7 @@ Resources:
                   - logs:CreateLogGroup
                   - logs:CreateLogStream
                   - logs:PutLogEvents
-                Resource: 
+                Resource:
                   - Fn::Join:
                     - ':'
                     -

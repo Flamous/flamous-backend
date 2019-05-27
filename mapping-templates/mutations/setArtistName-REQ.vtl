@@ -1,6 +1,6 @@
 {
   "version": "2018-05-29",
-  "operation": "PutItem",
+  "operation": "PutItem", ## Will have to be an UpateItem operation in the future (otherwise all other attributes always get overridden.
   "key": {
     "partition": { "S" : "$ctx.args.artistId" },
     "sort": { "S" : "$ctx.args.artistId" }

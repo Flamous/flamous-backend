@@ -95,9 +95,9 @@ type NoPlatformUser {
 type Artist {
   artistId: ID!
   name: String!
-  songs: [Song]!
-  albums: [Album]!
-  playlists: [Playlist]!
+  songs: [Song]
+  albums: [Album]
+  playlists: [Playlist]
   joinedAt: Int
   imageSource: String
   user: User

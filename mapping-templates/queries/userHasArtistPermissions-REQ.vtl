@@ -1,0 +1,8 @@
+{
+  "version": "2018-05-29",
+  "operation": "GetItem",
+  "key": {
+    "partition": { "S" : "user_${ctx.itendity.username}"},
+    "sort": { "S" : "${ctx.args.artistId}"}
+  }
+}

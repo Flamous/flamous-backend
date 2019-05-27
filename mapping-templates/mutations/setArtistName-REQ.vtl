@@ -1,0 +1,11 @@
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "partition": { "S" : "$ctx.args.artistId" },
+    "sort": { "S" : "$ctx.args.artistId" }
+  },
+  "attributeValues": {
+    "name": { "S" : "$ctx.args.name" }
+  }
+}

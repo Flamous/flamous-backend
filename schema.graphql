@@ -46,6 +46,11 @@ type Mutation {
     artistId: ID!
   ): Artist
 
+  setArtistName(
+    artistId: ID!,
+    name: String!
+  ): Boolean!
+
 
   # ALBUM
   createAlbum(

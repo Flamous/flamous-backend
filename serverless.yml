@@ -57,6 +57,14 @@ custom:
         name: deleteAlbumCoverFunction
         request: deleteAlbumCover-request.vtl
         response: deleteAlbumCover-response.vtl
+      - dataSource: mainTable
+        name: userHasArtistPermissions
+        request: userHasArtistPermissions-REQ.vtl
+        response: userHasArtistPermissions-DATA.vtl
+      - dataSource: mainTable
+        name: setArtistName
+        request: setArtistName-REQ.vtl
+        response: setArtistName-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

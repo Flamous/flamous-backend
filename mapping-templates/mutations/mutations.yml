@@ -65,7 +65,7 @@
   response: updateSong-response.vtl
 
 - type: Mutation
-  field: setArtistName--pipe
+  field: setArtistName
   kind: PIPELINE
   request: common-before.vtl
   response: common-after.vtl

@@ -72,3 +72,8 @@
   functions:
     - userHasArtistPermissions
     - setArtistName
+
+- type: Mutation
+  field: createNewArtist
+  request: createNewArtist-REQ.vtl
+  response: createNewArtist-DATA.vtl

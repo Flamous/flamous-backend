@@ -1,0 +1,8 @@
+#set($data = $util.toJson($ctx.result.data.Attributes))
+#set($artistId = $data.partition)
+#set($artistName = $data.name)
+
+$util.toJson({
+  "artistId": $artistId,
+  "name": $artistName
+})

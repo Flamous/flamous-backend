@@ -50,6 +50,9 @@ type Mutation {
     artistId: ID!,
     name: String!
   ): Boolean!
+  createNewArtist(
+    name: String!
+  ): Artist
 
 
   # ALBUM
@@ -101,7 +104,6 @@ type Artist {
   joinedAt: Int
   imageSource: String
   user: User
-  status: String!
 }
 
 type Song {

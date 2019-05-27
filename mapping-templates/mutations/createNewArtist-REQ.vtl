@@ -1,0 +1,27 @@
+#set($newArtistId = "artist_${util.autoId()}") ## Generate unique artist id. Users will have this as the artistId in Cognito.
+
+##{
+##  "version": "2018-05-29".
+##  "operation": "BatchPutItem", ## Maybe a bit overpowered for this simple setup. In the future maybe we do user -> artist connections, then this is needed.
+##  "tables": {
+##    "${mainTableRef}": [
+##      {
+##        "partition": { "S": "${newArtistId}"},
+##        "sort": { "S": "${newArtistId}"},
+##        "name": { "S": "${ctx.args.artistName}"}
+##      }
+##    ]
+##  }
+##}
+
+{
+  "version": "2018-05-29".
+  "operation": "PutItem",
+  "key": {
+    "partition": { "S": "${newArtistId}"},
+    "sort": { "S": "${newArtistId}"}
+  },
+  "attributeValues": {  
+    "name": { "S": "${ctx.args.name}"}
+  }
+}

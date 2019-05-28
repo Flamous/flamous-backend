@@ -75,5 +75,5 @@
 
 - type: Mutation
   field: createNewArtist
-  request: createNewArtist-REQ.vtl
-  response: createNewArtist-DATA.vtl
+  request: mutations/createNewArtist-REQ.vtl
+  response: mutations/createNewArtist-DATA.vtl

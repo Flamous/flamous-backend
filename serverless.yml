@@ -59,12 +59,12 @@ custom:
         response: deleteAlbumCover-response.vtl
       - dataSource: mainTable
         name: userHasArtistPermissions
-        request: userHasArtistPermissions-REQ.vtl
-        response: userHasArtistPermissions-DATA.vtl
+        request: queries/userHasArtistPermissions-REQ.vtl
+        response: queries/userHasArtistPermissions-DATA.vtl
       - dataSource: mainTable
         name: setArtistName
-        request: setArtistName-REQ.vtl
-        response: setArtistName-DATA.vtl
+        request: mutations/setArtistName-REQ.vtl
+        response: mutations/setArtistName-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

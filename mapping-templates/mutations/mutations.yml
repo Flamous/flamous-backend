@@ -73,7 +73,8 @@
     - userHasArtistPermissions
     - applyArtistName
 
-- type: Mutation
+- dataSource: mainTable
+  type: Mutation
   field: createNewArtist
   request: mutations/createNewArtist-REQ.vtl
   response: mutations/createNewArtist-DATA.vtl

@@ -22,6 +22,7 @@
     "sort": { "S": "${newArtistId}"}
   },
   "attributeValues": {  
-    "name": { "S": "${ctx.args.name}"}
+    "name": { "S": "${ctx.args.name}"},
+    "enabledStatus": { "S" : "NO_UPLOAD" }
   }
 }

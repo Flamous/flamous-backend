@@ -67,8 +67,8 @@
 - type: Mutation
   field: setArtistName
   kind: PIPELINE
-  request: common-before.vtl
-  response: common-after.vtl
+  request: functions/common-before.vtl
+  response: functions/common-after.vtl
   functions:
     - userHasArtistPermissions
     - setArtistName

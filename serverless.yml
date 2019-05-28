@@ -62,7 +62,7 @@ custom:
         request: queries/userHasArtistPermissions-REQ.vtl
         response: queries/userHasArtistPermissions-DATA.vtl
       - dataSource: mainTable
-        name: setArtistName
+        name: applyArtistName
         request: mutations/setArtistName-REQ.vtl
         response: mutations/setArtistName-DATA.vtl
 

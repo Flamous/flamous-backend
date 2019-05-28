@@ -71,7 +71,7 @@
   response: functions/common-after.vtl
   functions:
     - userHasArtistPermissions
-    - setArtistName
+    - applyArtistName
 
 - type: Mutation
   field: createNewArtist

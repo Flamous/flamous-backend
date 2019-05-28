@@ -5,7 +5,7 @@ tenant: christiankaindl
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
-  # - serverless-webpack
+  - serverless-webpack
   - serverless-offline
   - serverless-appsync-plugin
 
@@ -111,10 +111,10 @@ provider:
   stage: dev
   region: eu-central-1
 
-# functions:
-#   DeleteAlbumCover:
-#     role: AppSyncLambdaRole
-#     handler: functions/deleteAlbumCover.main
+functions:
+  DeleteAlbumCover:
+    role: AppSyncLambdaRole
+    handler: functions/deleteAlbumCover.main
   # PreSignupValidation:
   #   handler: functions/pre-signup-validation.main
   #   events:

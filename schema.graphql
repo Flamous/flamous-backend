@@ -4,7 +4,7 @@ union Collaborator = Artist | NoPlatformUser
 union Contributor = Artist | NoPlatformUser
 
 type Query {
-  getUser(): User
+  getUser: User
 
   getArtist(artistId: ID): Artist
   # artistList(top: Int!): [Artist!]!

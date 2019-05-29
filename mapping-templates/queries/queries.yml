@@ -1,8 +1,8 @@
 - dataSource: mainTable
   type: Query
   field: getUser
-  request: "user-request.vtl"
-  response: "user-response.vtl"
+  request: "queries/getUser-REQ.vtl"
+  response: "queries/getUser-DATA.vtl"
 
 - dataSource: mainTable
   type: Query

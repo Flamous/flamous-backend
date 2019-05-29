@@ -1,8 +1,0 @@
-{
-  "version": "2017-02-28",
-  "operation": "GetItem",
-  "key": {
-    "partition": $util.dynamodb.toStringJson($ctx.identity.username),
-    "sort": "USER"
-  }
-}

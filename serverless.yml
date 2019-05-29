@@ -38,7 +38,7 @@ custom:
         Required: False
       - 
         AttributeDataType: String
-        DeveloperOnlyAttribute: False
+        DeveloperOnlyAttribute: false
         Mutable: True
         Name: "upload_status" # this will end up being custom:another
         Required: False

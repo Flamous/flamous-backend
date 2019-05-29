@@ -2,7 +2,7 @@
   "version": "2017-02-28",
   "operation": "Query",
   "query": {
-    "expression": "#partition = 'user_${ctx.identity.username}' and begins_with(#sort, 'artist_')",
+    "expression": "#partition = "user_${ctx.identity.username}" and begins_with(#sort, "artist_")",
     "expressionNames": {
       "#partition": "partition",
       "#sort": "sort"

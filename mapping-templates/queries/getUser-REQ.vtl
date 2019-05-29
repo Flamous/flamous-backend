@@ -8,8 +8,8 @@
       "#sort": "sort"
     },
     "expressionValues": {
-      ":userId": "user_${ctx.identity.username}",
-      ":artistPrefix": "artist_"
+      ":userId": { "S" : "user_${ctx.identity.username}" },
+      ":artistPrefix": { "S" : "artist_" }
     }
   }
 }

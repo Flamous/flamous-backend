@@ -1,4 +1,6 @@
-#if($ctx.result.items.isEmpty()) ## No user yet. TODO: Initialte Artist and User creation (instead of doing it in the client)
+#set($result = $ctx.result.items)
+
+#if(result.isEmpty()) ## No user yet. TODO: Initialte Artist and User creation (instead of doing it in the client)
   $util.toJson({
     "userNotExists": true
   })

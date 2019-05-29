@@ -84,7 +84,8 @@ type Subscription {
     @aws_subscribe(mutations: ["createAlbum"])
 }
 type User {
-  userId: ID!
+  userNotExists: Boolean
+  userId: ID
   artistId: ID
   joinedAt: Int
   email: String

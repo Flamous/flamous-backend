@@ -91,6 +91,14 @@ custom:
         name: connectUser
         request: mutations/connectUser-REQ.vtl
         response: mutations/connectUser-DATA.vtl
+      - dataSource: mainTable
+        name: createAlbum
+        request: mutations/createAlbum-REQ.vtl
+        response: mutations/createAlbum-DATA.vtl
+      - dataSource: mainTable
+        name: updateAlbum
+        request: mutations/updateAlbum-REQ.vtl
+        response: mutations/updateAlbum-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

@@ -57,10 +57,13 @@ type Mutation {
 
   # ALBUM
   createAlbum(
-    albumData: AlbumInput!
+    # albumData: AlbumInput!
+    artistId: ID!,
+    title: String!
   ): Album
   updateAlbum(
     albumId: ID!,
+    artistId: ID!, # In the future, the artistId should not be passed from the client, but instead be fetched with the userId
     albumData: AlbumInput!
   ): Album
   deleteAlbum(albumId: ID!): Album
@@ -146,7 +149,7 @@ input AlbumInput {
   createdAt: AWSTimestamp
   lastUpdated: AWSTimestamp
   contributors: [ContributorInput]
-  songs: [SongInput]!
+  songs: [SongInput]
   imageSource: String
 }
 input SongInput {

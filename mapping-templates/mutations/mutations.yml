@@ -31,17 +31,17 @@
   request: "updateArtist-request.vtl"
   response: "updateArtist-response.vtl"
 
-- dataSource: albumsTable
-  type: Mutation
-  field: createAlbum
-  request: createAlbum-request.vtl
-  response: createAlbum-response.vtl
+# - dataSource: albumsTable
+#   type: Mutation
+#   field: createAlbum
+#   request: createAlbum-request.vtl
+#   response: createAlbum-response.vtl
 
-- dataSource: albumsTable
-  type: Mutation
-  field: updateAlbum
-  request: updateAlbum-request.vtl
-  response: updateAlbum-response.vtl
+# - dataSource: albumsTable
+#   type: Mutation
+#   field: updateAlbum
+#   request: updateAlbum-request.vtl
+#   response: updateAlbum-response.vtl
 
 - type: Mutation
   field: deleteAlbum
@@ -81,6 +81,24 @@
   functions:
     - createNewArtist
     - connectUser
+
+- type: Mutation
+  field: createAlbum
+  kind: PIPELINE
+  request: functions/common-before.vtl
+  response: functions/common-after.vtl
+  functions:
+    - userHasArtistPermissions
+    - createAlbum
+
+- type: Mutation
+  field: updateAlbum
+  kind: PIPELINE
+  request: functions/common-before.vtl
+  response: functions/common-after.vtl
+  functions:
+    - userHasArtistPermissions
+    - updateAlbum
 
 # - dataSource: mainTable
 #   type: Mutation

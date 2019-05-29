@@ -1,0 +1,12 @@
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "partition": { "S" : "album_${util.autoId()}" },
+    "sort": { "S" : "${ctx.args.artistId}" }
+  },
+  "attributeValues": {
+    "title": { "S" : "${ctx.args.title}" },
+    "type": { "S" : "REGULAR"}
+  }
+}

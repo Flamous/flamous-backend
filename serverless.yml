@@ -32,7 +32,7 @@ custom:
     CustomAttributes: 
       - 
         AttributeDataType: String
-        DeveloperOnlyAttribute: False
+        DeveloperOnlyAttribute: false
         Mutable: True
         Name: "artist_id" # this will end up being custom:another
         Required: False

@@ -1,0 +1,7 @@
+#set($artistId = $ctx.stash.artistId)
+#set($artistName = $ctx.stash.artistName)
+
+$util.toJson({
+  "artistId": $artistId,
+  "name": $artistName
+})

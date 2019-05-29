@@ -73,8 +73,17 @@
     - userHasArtistPermissions
     - applyArtistName
 
-- dataSource: mainTable
-  type: Mutation
+- type: Mutation
   field: createNewArtist
-  request: mutations/createNewArtist-REQ.vtl
-  response: mutations/createNewArtist-DATA.vtl
+  kind: PIPELINE
+  request: functions/common-before.vtl
+  response: functions/common-after.vtl
+  functions:
+    - createNewArtist
+    - connectUser
+
+# - dataSource: mainTable
+#   type: Mutation
+#   field: createNewArtist
+#   request: mutations/createNewArtist-REQ.vtl
+#   response: mutations/createNewArtist-DATA.vtl

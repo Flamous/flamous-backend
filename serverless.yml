@@ -83,6 +83,14 @@ custom:
         name: applyArtistName
         request: mutations/setArtistName-REQ.vtl
         response: mutations/setArtistName-DATA.vtl
+      - dataSource: mainTable
+        name: createNewArtist
+        request: mutations/createNewArtist-REQ.vtl
+        response: mutations/createNewArtist-DATA.vtl
+      - dataSource: mainTable
+        name: connectUser
+        request: mutations/connectUser-REQ.vtl
+        response: mutations/connectUser-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

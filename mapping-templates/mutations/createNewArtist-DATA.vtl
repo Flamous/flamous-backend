@@ -1,7 +1,7 @@
 #set($artistId = $ctx.result.partition)
 #set($artistName = $ctx.result.name)
 
-$util.toJson({
-  "artistId": $artistId,
-  "name": $artistName
-})
+$util.qr($ctx.stash.put("artistId", $artistId))
+$util.qr($ctx.stash.put("artistName", $artistName))
+
+{}

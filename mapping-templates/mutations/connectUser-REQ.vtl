@@ -1,0 +1,11 @@
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "partion": { "S" : "user_${ctx.identity.username}" },
+    "sort": { "S" : "${ctx.stash.artistId}" }
+  },
+  "attributeValues": {
+    "upload_status" { "S" : "NO_UPLOAD" }
+  }
+}

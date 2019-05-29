@@ -2,7 +2,12 @@
 #set($artistId = $data.partition)
 #set($artistName = $data.name)
 
+## $util.toJson({
+##   "artistId": $artistId,
+##   "name": $artistName
+## })
+
 $util.toJson({
-  "artistId": $artistId,
-  "name": $artistName
+  "artistId": "artistId_value",
+  "name": "artistName_value"
 })

@@ -85,7 +85,7 @@ type Subscription {
 }
 type User {
   userId: ID!
-  artist: Artist
+  artistId: ID
   joinedAt: Int
   email: String
   username: String

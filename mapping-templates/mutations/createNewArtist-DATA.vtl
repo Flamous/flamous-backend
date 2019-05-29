@@ -1,12 +1,7 @@
 #set($artistId = $ctx.result.partition)
 #set($artistName = $ctx.result.name)
 
-## $util.toJson({
-##   "artistId": $artistId,
-##   "name": $artistName
-## })
-
 $util.toJson({
-  "artistId": "artistId_value",
-  "name": "artistName_value"
+  "artistId": $artistId,
+  "name": $artistName
 })

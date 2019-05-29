@@ -6,7 +6,7 @@
   })
 #else
   $util.toJson({
-    "userId": $ctx.result.partition,
-    "artistId": $ctx.result.sort
+    "userId": $ctx.result.items[0].partition,
+    "artistId": $ctx.result.items[0].sort
   })
 #end

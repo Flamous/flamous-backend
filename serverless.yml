@@ -26,6 +26,23 @@ custom:
   # Load our secret environment variables based on the current stage.
   # Fallback to default if it is not in prod.
   # environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+  CognitoAddCustomAttributes: 
+    CognitoUserPoolIdOutputKey: "UserPoolId"              # The key of the outputted UserPool Ref 
+    CognitoUserPoolClientIdOutputKey: "UserPoolClientId"  # The key of the outputted UserPoolClient Ref
+    CustomAttributes: 
+      - 
+        AttributeDataType: String
+        DeveloperOnlyAttribute: False
+        Mutable: True
+        Name: "artist_id" # this will end up being custom:another
+        Required: False
+      - 
+        AttributeDataType: String
+        DeveloperOnlyAttribute: False
+        Mutable: True
+        Name: "upload_status" # this will end up being custom:another
+        Required: False
+
   appSync:
     name: ${self:custom.stage}-api
     authenticationType: AMAZON_COGNITO_USER_POOLS
@@ -98,22 +115,6 @@ custom:
         config:
           lambdaFunctionArn:
             Fn::GetAtt: [DeleteAlbumCoverLambdaFunction, Arn]
-  CognitoAddCustomAttributes: 
-    CognitoUserPoolIdOutputKey: "UserPoolId"              # The key of the outputted UserPool Ref 
-    CognitoUserPoolClientIdOutputKey: "UserPoolClientId"  # The key of the outputted UserPoolClient Ref
-    CustomAttributes: 
-      - 
-        AttributeDataType: String
-        DeveloperOnlyAttribute: False
-        Mutable: True
-        Name: "artist_id" # this will end up being custom:another
-        Required: False
-      - 
-        AttributeDataType: String
-        DeveloperOnlyAttribute: False
-        Mutable: True
-        Name: "upload_status" # this will end up being custom:another
-        Required: False
     # dataSources:
     #   - type: AMAZON_DYNAMODB | AMAZON_ELASTICSEARCH | AWS_LAMBDA
     #     name: myDynamoDB | myElasticSearch | myLambda

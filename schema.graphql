@@ -9,6 +9,11 @@ type Query {
   getArtist(artistId: ID): Artist
   # artistList(top: Int!): [Artist!]!
 
+  getAlbum(
+    albumId: ID!,
+    artistId: ID!
+  ): Album
+
   getAlbumDetails(albumId: ID!): Album
   getArtistAlbums(artistId: ID!, max: Int = 5): [Album!]!
 

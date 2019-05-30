@@ -12,9 +12,9 @@
 
 - dataSource: mainTable
   type: Query
-  field: getAlbumDetails
-  request: album-request.vtl
-  response: album-response.vtl
+  field: getAlbum
+  request: queries/getAlbum-REQ.vtl
+  response: queries/getAlbum-DATA.vtl
 
 - dataSource: mainTable
   type: Query

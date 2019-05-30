@@ -1,1 +1,4 @@
-$util.toJson($ctx.result)
+$util.toJson({
+  songId: $ctx.result.partition,
+  title: $ctx.result.title
+})

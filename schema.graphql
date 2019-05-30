@@ -89,7 +89,7 @@ type Mutation {
 
   getsongList(
     albumId: ID!
-  )
+  ): [Song]
 }
 
 type Subscription {

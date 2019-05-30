@@ -70,11 +70,12 @@ type Mutation {
 
   # SONG
   createSong(
-    songId: ID!,
+    albumId: ID!,
     songData: SongInput
   ): Song
   updateSong(
     songId: ID!,
+    albumId: ID!, # In the future, the albumId should not be passed from the client, but instead be fetched with the userId
     songData: SongInput!
   ): Song
   deleteSong(
@@ -111,10 +112,10 @@ type Artist {
 
 type Song {
   songId: ID!
-  title: String!
-  contributors: [Contributor]!
-  artist: Artist!
-  album: Album!
+  title: String
+  contributors: [Contributor]
+  artistId: ID
+  album: Album
   audioSource: String
   imageSource: String
   releaseAt: Int

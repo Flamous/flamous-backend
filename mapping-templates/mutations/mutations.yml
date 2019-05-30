@@ -52,17 +52,17 @@
     - deleteAlbumDataFunction
     - deleteAlbumCoverFunction
 
-- dataSource: songsTable
+- dataSource: mainTable
   type: Mutation
   field: createSong
-  request: createSong-request.vtl
-  response: createSong-response.vtl
+  request: mutations/createSong-REQ.vtl
+  response: mutations/createSong-DATA.vtl
 
-- dataSource: songsTable
+- dataSource: mainTable
   type: Mutation
   field: updateSong
-  request: updateSong-request.vtl
-  response: updateSong-response.vtl
+  request: mutations/updateSong-REQ.vtl
+  response: mutations/updateSong-DATA.vtl
 
 - type: Mutation
   field: setArtistName

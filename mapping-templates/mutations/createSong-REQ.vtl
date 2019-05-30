@@ -1,0 +1,9 @@
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "patition": { "S": "song_${util.autoId()}" },
+    "sort": { "S" : "${ctx.args.albumId}"} ## TODO: Proper userHasAlbumPermissions check.
+  },
+  "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args.songData)
+}

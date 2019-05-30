@@ -2,7 +2,8 @@
   "version": "2018-05-29",
   "operation": "UpdateItem",
   "key": {
-    "songId": { "S": "${context.arguments.songId}" }
+    "partition": { "S": "${ctx.args.songId}" },
+    "sort": { "S" : "${ctx.args.albumId}" } ## TODO: Should be fetched with a function, NOT user supplied
   },
 
   ## Mostly copied from AWS AppSync docs: https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-dynamodb.html#aws-appsync-resolver-mapping-template-reference-dynamodb-updateitem
@@ -68,14 +69,5 @@
     #if( !${expValues.isEmpty()} )
       ,"expressionValues" : $utils.toJson($expValues)
     #end
-  },
-  "condition": {
-    "expression": "#owner = :username",
-    "expressionValues": {
-      ":username": { "S": "${context.identity.username}" }
-    },
-    "expressionNames": {
-      "#owner": "owner"
-    }
   }
 }

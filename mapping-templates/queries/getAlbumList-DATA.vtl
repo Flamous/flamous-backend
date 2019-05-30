@@ -2,12 +2,14 @@
 
 
 #foreach($item in $ctx.result.items)
-  $util.qr($result.add({
-    "albumId": "${item.partition}",
-    "artistId": "${item.sort}",
-    "title": "${item.title}",
-    "published": "${item.published}"
-  }))
+  #set($itemToAdd = {})
+  $util.qr($itemToAdd.put("albumId", "$item.partition"))
+  $util.qr($itemToAdd.put("artistId", "$item.sort"))
+  $util.qr($itemToAdd.put("title", "$item.title"))
+  #if($item.published)
+    $util.qr($itemToAdd.put("published", "$item.published"))
+  #end
+  $util.qr($result.add($itemToAdd))
 #end
 
 $util.toJson($result)

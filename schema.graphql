@@ -132,13 +132,14 @@ type Playlist {
 type Album {
   albumId: ID!
   title: String!
-  artist: Artist!
-  story: AWSJSON,
+  artist: Artist
+  artistId: ID
+  story: AWSJSON
   releasedDate: AWSDateTime
   createdAt: AWSTimestamp
   lastUpdated: AWSTimestamp
   contributors: [Contributor]
-  songs: [Song]!
+  songs: [Song]
   imageSource: String
 }
 

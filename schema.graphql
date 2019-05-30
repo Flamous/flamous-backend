@@ -158,7 +158,7 @@ input SongInput {
   title: String!
   contributors: [ContributorInput]
   artist: ArtistInput
-  album: String!
+  album: String
   audioSource: String
   imageSource: String
   releasedDate: Int

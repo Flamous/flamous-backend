@@ -86,6 +86,10 @@ type Mutation {
   deleteSong(
     songId: ID!
   ): Song
+
+  getsongList(
+    albumId: ID!
+  )
 }
 
 type Subscription {

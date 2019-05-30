@@ -1,0 +1,16 @@
+{
+  "version": "2018-05-29",
+  "operation": "Query",
+  "index": "gsi-1",
+  "query": {
+    "expression": "#sort = :albumId and begins_with(#partition, :songIdPrefix)",
+    "expressionNames": {
+      "#partition": "partition",
+      "#sort": "sort"
+    },
+    "expressionValues": {
+      ":albumId" : { "S" : "${ctx.args.albumId}" },
+      ":songIdPrefix" : { "S" : "song_" }
+    }
+  }
+}

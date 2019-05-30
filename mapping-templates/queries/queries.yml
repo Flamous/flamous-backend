@@ -18,6 +18,12 @@
 
 - dataSource: mainTable
   type: Query
+  field: getSongList
+  request: queries/getSongList-REQ.vtl
+  response: queries/getSongList-DATA.vtl
+
+- dataSource: mainTable
+  type: Query
   field: getArtistAlbums
   request: getArtistAlbums-request.vtl
   response: getArtistAlbums-response.vtl

@@ -1,10 +1,13 @@
-[
-#foreach(item in $ctx.result.items)
-  {
-    albumId: item.partition,
-    artistId: item.sort,
-    title: item.title,
-    published: item.published
-  },
+#set($result = [])
+
+
+#foreach($item in $ctx.result.items)
+  $util.qr($result.add({
+    "albumId": "${item.partition}",
+    "artistId": "${item.sort}",
+    "title": "${item.title}",
+    "published": "${item.published}"
+  }))
 #end
-]
+
+$util.toJson($result)

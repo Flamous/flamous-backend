@@ -87,7 +87,7 @@ type Mutation {
     songId: ID!
   ): Song
 
-  getsongList(
+  getSongList(
     albumId: ID!
   ): [Song]
 }

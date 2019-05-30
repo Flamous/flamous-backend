@@ -1,0 +1,24 @@
+{
+  "version": "2018-05-29",
+  "operation": "Query",
+  "index": "gsi-1",
+  "query": {
+    "expression": "#sort = :artistId and begins_with(#partition, :albumIdPrefix)",
+    "expressionNames": {
+      "#partition": "partition",
+      "#sort": "sort"
+    },
+    "expressionValues": {
+      ":artistId": { "S": "${ctx.args.artistId}" },
+      ":albumIdPrefix": { "S": "album_" }
+    }
+    #if($ctx.args.filterPublished)
+      , "filter": {
+        "expression" : "attribute_exists(#published)"
+        "expressionNames" : {
+            "#published" : "published",
+        }
+      }
+    #end
+  }
+}

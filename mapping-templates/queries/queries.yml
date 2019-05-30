@@ -34,6 +34,12 @@
   request: "song-request.vtl"
   response: "song-response.vtl"
 
+- dataSource: mainTable
+  type: Query
+  field: getAlbumList
+  request: queries/getAlbumList-REQ.vtl
+  response: queries/getAlbumList-DATA.vtl
+
 # - dataSource: mainTable
 #   type: Query
 #   field: getSongDetailsList

@@ -17,6 +17,11 @@ type Query {
   getAlbumDetails(albumId: ID!): Album
   getArtistAlbums(artistId: ID!, max: Int = 5): [Album!]!
 
+  getAlbumList(
+    artistId: ID!
+    filterPublished: Boolean
+  ): [Album]
+
   getRecentArtistReleases(artistId: ID!): [Album]!
 
   getFeaturedArtists(max: Int = 7): [Artist!]!

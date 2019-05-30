@@ -145,7 +145,7 @@ type Playlist {
 
 type Album {
   albumId: ID!
-  title: String!
+  title: String
   artist: Artist
   artistId: ID
   story: AWSJSON

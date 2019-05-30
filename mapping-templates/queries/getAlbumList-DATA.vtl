@@ -1,1 +1,10 @@
-$util.toJson($ctx.result.items)
+[
+#foreach(item in $ctx.result.items)
+  {
+    albumId: item.partition,
+    artistId: item.sort,
+    title: item.title,
+    published: item.published
+  },
+#end
+]

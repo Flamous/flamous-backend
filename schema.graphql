@@ -149,7 +149,7 @@ type Album {
   artist: Artist
   artistId: ID
   story: AWSJSON
-  releasedDate: AWSDateTime
+  published: AWSDateTime
   createdAt: AWSTimestamp
   lastUpdated: AWSTimestamp
   contributors: [Contributor]

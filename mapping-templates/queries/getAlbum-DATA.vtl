@@ -1,1 +1,8 @@
 $util.toJson($ctx.result)
+
+#set($returnValues = $ctx.result)
+
+$util.qr($returnValues.put("artistId", $ctx.result.sort))
+$util.qr($returnValues.put("albumId", $ctx.result.partition))
+$util.qr($returnValues.put("partition", null))
+$util.qr($returnValues.put("sort", null))

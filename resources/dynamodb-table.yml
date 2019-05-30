@@ -166,4 +166,8 @@ Resources:
             - AttributeName: partition
               KeyType: RANGE
           Projection:
-            ProjectionType: KEYS_ONLY
+            ProjectionType: INCLUDE
+            NonKeyAttributes:
+              - title
+              - published
+              - type

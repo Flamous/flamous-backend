@@ -26,6 +26,10 @@ type Query {
 
   getSongDetails(songId: ID): Song
   getSongListDetails(songs: [ID!]!): [Song]!
+
+  getSongList(
+    albumId: ID!
+  ): [Song]
 }
 
 type Mutation {
@@ -86,10 +90,6 @@ type Mutation {
   deleteSong(
     songId: ID!
   ): Song
-
-  getSongList(
-    albumId: ID!
-  ): [Song]
 }
 
 type Subscription {

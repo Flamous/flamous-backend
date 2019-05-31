@@ -78,7 +78,7 @@ type Mutation {
   updateAlbum(
     albumId: ID!,
     artistId: ID!, # In the future, the artistId should not be passed from the client, but instead be fetched with the userId
-    albumData: AlbumInput!
+    data: AlbumInput!
   ): Album
   deleteAlbum(albumId: ID!): Album
 
@@ -90,7 +90,7 @@ type Mutation {
   updateSong(
     songId: ID!,
     albumId: ID!, # In the future, the albumId should not be passed from the client, but instead be fetched with the userId
-    songData: SongInput!
+    data: SongInput!
   ): Song
   deleteSong(
     songId: ID!
@@ -158,8 +158,8 @@ type Album {
 }
 
 input AlbumInput {
-  title: String!
-  artist: ArtistInput!
+  title: String
+  artist: ArtistInput
   story: AWSJSON
   releasedDate: AWSDateTime
   createdAt: AWSTimestamp

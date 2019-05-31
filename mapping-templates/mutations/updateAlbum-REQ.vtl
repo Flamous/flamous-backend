@@ -15,7 +15,7 @@
   #set( $expRemove = [] )
 
   ## Iterate through each argument, skipping "id" and "expectedVersion" **
-  #foreach( $entry in $context.arguments.entrySet() )
+  #foreach( $entry in $context.arguments.data.entrySet() )
       #if( $entry.key != "albumId" )
           #if( (!$entry.value) && ("$!{entry.value}" == "") )
               ## If the argument is set to "null", then remove that attribute from the item in DynamoDB **

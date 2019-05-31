@@ -2,9 +2,10 @@
 
 #foreach($item in $ctx.result.items)
   #set($itemToAdd = {})
-  $util.qr($itemToAdd.put("songId", "$item.partition"))
-  $util.qr($itemToAdd.put("artistId", "$item.sort"))
-  $util.qr($itemToAdd.put("title", "$item.title"))
+  $util.qr($itemToAdd.put("songId", $item.partition))
+  $util.qr($itemToAdd.put("artistId", $item.sort))
+  $util.qr($itemToAdd.put("title", $item.title))
+  $util.qr($itemToAdd.put("audioSource", $item.audioSource))
 
   $util.qr($result.add($itemToAdd))
 #end

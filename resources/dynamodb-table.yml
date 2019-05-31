@@ -147,6 +147,7 @@ Resources:
           Projection:
             ProjectionType: INCLUDE
             NonKeyAttributes:
+
               - sort
         - IndexName: lsi-3
           KeySchema:
@@ -158,17 +159,3 @@ Resources:
             ProjectionType: INCLUDE
             NonKeyAttributes:
               - sort
-      GlobalSecondaryIndexes:
-        - IndexName: gsi-1
-          KeySchema:
-            - AttributeName: sort
-              KeyType: HASH
-            - AttributeName: partition
-              KeyType: RANGE
-          Projection:
-            ProjectionType: INCLUDE
-            NonKeyAttributes:
-              - title
-              - published
-              - type
-              - imageSource

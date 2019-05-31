@@ -40,8 +40,10 @@
   request: queries/getAlbumList-REQ.vtl
   response: queries/getAlbumList-DATA.vtl
 
-# - dataSource: mainTable
-#   type: Query
-#   field: getSongDetailsList
-#   request: "songList-request.vtl"
-#   response: "songList-response.vtl"
+- type: Query
+  field: updateAlbum
+  kind: PIPELINE
+  request: functions/common-before.vtl
+  response: functions/getFeatured-after.vtl
+  functions:
+    - getFeaturedSongs

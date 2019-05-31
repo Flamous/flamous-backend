@@ -32,6 +32,8 @@ type Query {
   getSongDetails(songId: ID): Song
   getSongListDetails(songs: [ID!]!): [Song]!
 
+  getFeatured(): Featured
+
   getSongList(
     albumId: ID!
   ): [Song]
@@ -100,6 +102,11 @@ type Mutation {
 type Subscription {
   onCreatedAlbum(artistId: ID!): Album
     @aws_subscribe(mutations: ["createAlbum"])
+}
+type Featured {
+  songs: [Song],
+  albums: [Album],
+  artists: [Artist]
 }
 type User {
   userNotExists: Boolean

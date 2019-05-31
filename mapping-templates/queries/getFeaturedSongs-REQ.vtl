@@ -1,0 +1,15 @@
+{
+  "version": "2018-05-29",
+  "operation": "Query",
+  "query": {
+    "expression": "#partition = :featured and begins_with(#sort, :songIdPrefix)",
+    "expressionNames": {
+      "#partition": "partition",
+      "#sort": "sort"
+    },
+    "expressionValues": {
+      ":featured": { "S": "FEATURED" },
+      ":songIdPrefix": { "S": song_ }
+    }
+  }
+}

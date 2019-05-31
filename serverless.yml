@@ -99,6 +99,10 @@ custom:
         name: updateAlbum
         request: mutations/updateAlbum-REQ.vtl
         response: mutations/updateAlbum-DATA.vtl
+      - dataSource: mainTable
+        name: getFeaturedSongs
+        request: queries/getFeaturedSongs-REQ.vtl
+        response: queries/getFeaturedSongs-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

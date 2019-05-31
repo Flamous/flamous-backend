@@ -41,7 +41,7 @@
   response: queries/getAlbumList-DATA.vtl
 
 - type: Query
-  field: updateAlbum
+  field: getFeatured
   kind: PIPELINE
   request: functions/common-before.vtl
   response: functions/getFeatured-after.vtl

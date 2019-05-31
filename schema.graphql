@@ -32,7 +32,7 @@ type Query {
   getSongDetails(songId: ID): Song
   getSongListDetails(songs: [ID!]!): [Song]!
 
-  getFeatured(): Featured
+  getFeatured: Featured
 
   getSongList(
     albumId: ID!

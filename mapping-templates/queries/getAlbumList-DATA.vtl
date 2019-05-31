@@ -3,12 +3,12 @@
 
 #foreach($item in $ctx.result.items)
   #set($itemToAdd = {})
-  $util.qr($itemToAdd.put("albumId", "$item.partition"))
-  $util.qr($itemToAdd.put("artistId", "$item.sort"))
-  $util.qr($itemToAdd.put("title", "$item.title"))
-  $util.qr($itemToAdd.put("imageSource", "$item.imageSource"))
+  $util.qr($itemToAdd.put("albumId", $item.partition))
+  $util.qr($itemToAdd.put("artistId", $item.sort))
+  $util.qr($itemToAdd.put("title", $item.title))
+  $util.qr($itemToAdd.put("imageSource", $item.imageSource))
   #if($item.published)
-    $util.qr($itemToAdd.put("published", "$item.published"))
+    $util.qr($itemToAdd.put("published", $item.published))
   #end
   $util.qr($result.add($itemToAdd))
 #end

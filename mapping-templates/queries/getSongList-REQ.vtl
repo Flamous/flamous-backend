@@ -12,5 +12,6 @@
       ":albumId" : { "S" : "${ctx.args.albumId}" },
       ":songIdPrefix" : { "S" : "song_" }
     }
-  }
+  },
+  "select": "ALL_PROJECTED_ATTRIBUTES"
 }

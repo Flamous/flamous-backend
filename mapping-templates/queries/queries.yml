@@ -47,3 +47,4 @@
   response: functions/getFeatured-after.vtl
   functions:
     - getFeaturedSongs
+    - getFeaturedAlbums

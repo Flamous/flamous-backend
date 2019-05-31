@@ -103,6 +103,10 @@ custom:
         name: getFeaturedSongs
         request: queries/getFeaturedSongs-REQ.vtl
         response: queries/getFeaturedSongs-DATA.vtl
+      - dataSource: mainTable
+        name: getFeaturedAlbums
+        request: queries/getFeaturedAlbums-REQ.vtl
+        response: queries/getFeaturedAlbums-DATA.vtl
 
     dataSources:
       - type: AMAZON_DYNAMODB

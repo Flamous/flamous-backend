@@ -1,0 +1,14 @@
+#set($result = [])
+
+#foreach($item in $ctx.result.items)
+  #set($itemToAdd = {})
+  $util.qr($itemToAdd.put("albumId", $item.sort))
+  $util.qr($itemToAdd.put("title", $item.title))
+  $util.qr($itemToAdd.put("imageSource", $item.imageSource))
+
+  $util.qr($result.add($itemToAdd))
+#end
+
+$util.qr($ctx.stash.put("albums", $result))
+
+{}

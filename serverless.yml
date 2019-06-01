@@ -50,6 +50,8 @@ custom:
       awsRegion: ${self:provider.region}
       defaultAction: ALLOW
       userPoolId: { Ref: CognitoUserPoolUserPool1 }
+    additionalAuthenticationProviders:
+      - authenticationType: AWS_IAM
     mappingTemplatesLocation: mapping-templates
     logConfig:
       loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }

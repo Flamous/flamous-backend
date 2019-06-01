@@ -3,7 +3,7 @@
 union Collaborator = Artist | NoPlatformUser
 union Contributor = Artist | NoPlatformUser
 
-type Query {
+type Query @aws_iam {
   getUser: User
 
   getArtist(artistId: ID): Artist

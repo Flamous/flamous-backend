@@ -61,18 +61,6 @@ custom:
       - ${file(mapping-templates/mutations/mutations.yml)}
     schema: schema.graphql
     functionConfigurations:
-      - dataSource: usersTable
-        name: createUserFunction
-        request: "createUser-request.vtl"
-        response: "createUser-response.vtl"
-      - dataSource: artistsTable
-        name: createArtistFunction
-        request: "createArtist-request.vtl"
-        response: "createArtist-response.vtl"
-      - dataSource: albumsTable
-        name: deleteAlbumDataFunction
-        request: deleteAlbum-request.vtl
-        response: deleteAlbum-response.vtl
       - dataSource: deleteAlbumCoverFunction
         name: deleteAlbumCoverFunction
         request: deleteAlbumCover-request.vtl
@@ -111,26 +99,6 @@ custom:
         response: queries/getFeaturedAlbums-DATA.vtl
 
     dataSources:
-      - type: AMAZON_DYNAMODB
-        name: artistsTable
-        config:
-          tableName:
-            Ref: ArtistsTable
-      - type: AMAZON_DYNAMODB
-        name: songsTable
-        config:
-          tableName:
-            Ref: SongsTable
-      - type: AMAZON_DYNAMODB
-        name: albumsTable
-        config:
-          tableName:
-            Ref: AlbumsTable
-      - type: AMAZON_DYNAMODB
-        name: usersTable
-        config:
-          tableName:
-            Ref: UsersTable
       - type: AMAZON_DYNAMODB
         name: mainTable
         config:

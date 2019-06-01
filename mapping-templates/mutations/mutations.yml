@@ -1,15 +1,3 @@
-- dataSource: usersTable
-  type: Mutation
-  field: createUser
-  request: "createUser-request.vtl"
-  response: "createUser-response.vtl"
-
-- dataSource: usersTable
-  type: Mutation
-  field: updateUser
-  request: "updateUser-request.vtl"
-  response: "updateUser-response.vtl"
-
 - type: Mutation
   kind: PIPELINE
   field: createUserAndArtist
@@ -18,30 +6,6 @@
   functions:
     - createArtistFunction
     - createUserFunction
-
-- dataSource: artistsTable
-  type: Mutation
-  field: createArtist
-  request: "createArtist-request.vtl"
-  response: "createArtist-response.vtl"
-
-- dataSource: artistsTable
-  type: Mutation
-  field: updateArtist
-  request: "updateArtist-request.vtl"
-  response: "updateArtist-response.vtl"
-
-# - dataSource: albumsTable
-#   type: Mutation
-#   field: createAlbum
-#   request: createAlbum-request.vtl
-#   response: createAlbum-response.vtl
-
-# - dataSource: albumsTable
-#   type: Mutation
-#   field: updateAlbum
-#   request: updateAlbum-request.vtl
-#   response: updateAlbum-response.vtl
 
 - type: Mutation
   field: deleteAlbum

@@ -3,7 +3,7 @@
 union Collaborator = Artist | NoPlatformUser
 union Contributor = Artist | NoPlatformUser
 
-type Query @aws_iam {
+type Query {
   getUser: User
 
   getArtist(artistId: ID): Artist
@@ -33,6 +33,7 @@ type Query @aws_iam {
   getSongListDetails(songs: [ID!]!): [Song]!
 
   getFeatured: Featured
+  @aws_iam
 
   getSongList(
     albumId: ID!

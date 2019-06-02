@@ -1,20 +1,11 @@
-- type: Mutation
-  kind: PIPELINE
-  field: createUserAndArtist
-  request: createUserAndArtist-before.vtl
-  response: createUserAndArtist-after.vtl
-  functions:
-    - createArtistFunction
-    - createUserFunction
-
-- type: Mutation
-  field: deleteAlbum
-  kind: PIPELINE
-  request: deleteAlbum-before.vtl
-  response: deleteAlbum-after.vtl
-  functions:
-    - deleteAlbumDataFunction
-    - deleteAlbumCoverFunction
+# - type: Mutation
+#   field: deleteAlbum
+#   kind: PIPELINE
+#   request: deleteAlbum-before.vtl
+#   response: deleteAlbum-after.vtl
+#   functions:
+#     - deleteAlbumDataFunction
+#     - deleteAlbumCoverFunction
 
 - dataSource: mainTable
   type: Mutation

@@ -95,6 +95,13 @@ Resources:
                       - '/protected/'
                       - '$'
                       - '{cognito-identity.amazonaws.com:sub}/*'
+              - Effect: 'Allow'
+                Action:
+                  - 'appsync:GraphQL'
+                Resource:
+                  - Fn::GetAtt:
+                      - GraphQlApi
+                      - Arn
 
   CognitoUnauthRole:
     Type: AWS::IAM::Role

@@ -99,9 +99,11 @@ Resources:
                 Action:
                   - 'appsync:GraphQL'
                 Resource:
-                  - Fn::GetAtt:
-                      - GraphQlApi
-                      - Arn
+                  - Fn::Join:
+                    - ''
+                    -
+                      - Fn::GetAtt: [GraphQlApi, Arn]
+                      - '/types/*'
 
   CognitoUnauthRole:
     Type: AWS::IAM::Role
@@ -141,9 +143,11 @@ Resources:
                 Action:
                   - 'appsync:GraphQL'
                 Resource:
-                  - Fn::GetAtt:
-                      - GraphQlApi
-                      - Arn
+                  - Fn::Join:
+                    - ''
+                    -
+                      - Fn::GetAtt: [GraphQlApi, Arn]
+                      - '/types/Query/fields/*'
 
   CognitoUserGroup:
     Type: AWS::IAM::Group

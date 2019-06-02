@@ -23,6 +23,8 @@ Resources:
       Roles:
         authenticated:
           Fn::GetAtt: [CognitoAuthRole, Arn]
+        unauthenticated:
+          Fn::GetAtt: [CognitoUnauthRole, Arn]
 
   # IAM role used for authenticated users
   CognitoAuthRole:

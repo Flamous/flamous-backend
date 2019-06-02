@@ -121,7 +121,7 @@ type NoPlatformUser {
   name: String!
 }
 
-type Artist {
+type Artist @aws_iam @aws_cognito_user_pools {
   artistId: ID!
   name: String!
   songs: [Song]
@@ -132,7 +132,7 @@ type Artist {
   user: User
 }
 
-type Song {
+type Song @aws_iam @aws_cognito_user_pools {
   songId: ID!
   title: String
   contributors: [Contributor]
@@ -151,7 +151,7 @@ type Playlist {
   collaborators: [Collaborator]
 }
 
-type Album {
+type Album @aws_iam @aws_cognito_user_pools {
   albumId: ID!
   title: String
   artist: Artist

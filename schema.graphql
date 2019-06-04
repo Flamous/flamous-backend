@@ -137,6 +137,7 @@ type Song @aws_iam @aws_cognito_user_pools {
   title: String
   contributors: [Contributor]
   artistId: ID
+  albumId: ID
   album: Album
   audioSource: String
   imageSource: String

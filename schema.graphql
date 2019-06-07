@@ -3,7 +3,7 @@
 union Collaborator = Artist | NoPlatformUser
 union Contributor = Artist | NoPlatformUser
 
-type Query @aws_iam {
+type Query @aws_iam @aws_cognito_user_pools {
   getUser: User
 
   getArtist(artistId: ID): Artist

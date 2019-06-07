@@ -1,8 +1,15 @@
 {
   "version": "2018-05-29",
-  "operation": "GetItem",
-  "key": {
-    "partition": { "S" : "$ctx.args.albumId" },
-    "sort": { "S" : "$ctx.args.artistId" }
+  "operation": "Query",
+  "query": {
+    "expression": "#partition = :albumId AND begins_with(#sort, :artistIdPrefix)",
+    "expressionNames": {
+      "#partition": "partition",
+      "#sort": "sort"
+    },
+    "expressionValues": {
+      ":albumId": { "S" : "${ctx.args.albumId}" },
+      ":artistIdPrefix": { "S" : "artist_" }
+    }
   }
 }

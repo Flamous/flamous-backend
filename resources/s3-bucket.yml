@@ -16,6 +16,8 @@ Resources:
               - POST
               - DELETE
               - HEAD
+            ExposedHeaders:
+              - ETag
             MaxAge: 3000
 
   
